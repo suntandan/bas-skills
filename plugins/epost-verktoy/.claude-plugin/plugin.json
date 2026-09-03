@@ -1,0 +1,9 @@
+{
+  "name": "epost-verktoy",
+  "description": "Verktøykasse for e-postmarkedsføring: GIF/WebP-konvertering, simulering av AI-innboks-sammendrag, emnelinje- og preheader-analyse, cross-client-kompatibilitetssjekk og multi-agent research (research, consensus, debate).",
+  "version": "1.0.0",
+  "author": {
+    "name": "Bas Kommunikasjon"
+  },
+  "homepage": "https://github.com/suntandan/bas-skills"
+}

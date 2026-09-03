@@ -1,0 +1,20 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "bas-skills",
+  "description": "Claude Code-skills for e-postmarkedsførere — laget av Bas Kommunikasjon for Dialogkonferansen 2026",
+  "owner": {
+    "name": "Bas Kommunikasjon"
+  },
+  "plugins": [
+    {
+      "name": "epost-verktoy",
+      "description": "Verktøykasse for e-postmarkedsføring: GIF-konvertering, AI-innboks-simulering, preheader-sjekk, klientkompatibilitet og multi-agent research.",
+      "author": {
+        "name": "Bas Kommunikasjon"
+      },
+      "category": "marketing",
+      "source": "./plugins/epost-verktoy",
+      "homepage": "https://github.com/suntandan/bas-skills"
+    }
+  ]
+}
