@@ -12,10 +12,11 @@ Rediger `deck-config.js`:
 
 ```js
 window.DK26 = {
-  "wifiPassord": "",                                    // vises på slide 1 og 13
+  "wifiPassord": "GanskeVanskelig",                     // vises på slide 1 og 13
   "urlPrompt": "https://work.bas.no/dk26/materiell/",
-  "urlRapport": "",                                     // QR på slide 16
-  "urlRepo": "https://github.com/suntandan/bas-skills"
+  "urlRapport": "https://work.bas.no/dk26/rapport/",    // QR på slide 16
+  "urlRepo": "https://github.com/suntandan/bas-skills",
+  "visThumbnails": false                                // stripa til venstre
 };
 ```
 
@@ -30,7 +31,7 @@ uten url står bare tomt (slik originalen er satt opp).
 
 ## Bygging
 
-`bygg.py` lager `index.html` fra `src/DK26 Slides.dc.html`. Fire ting endres,
+`bygg.py` lager `index.html` fra `src/DK26 Slides.dc.html`. Fem ting endres,
 alt annet er kilden uendret:
 
 1. **React, ReactDOM og Babel** hentes fra `vendor/` i stedet for unpkg.
@@ -42,6 +43,7 @@ alt annet er kilden uendret:
    i stedet for «Åpne felter» i editoren.
 4. **QR-kodene** er ferdige PNG-er i `assets/` i stedet for kall til
    `api.qrserver.com` mens du står på scenen.
+5. **Thumbnail-stripa** til venstre skrus av via `visThumbnails`.
 
 Til sammen: null eksterne forespørsler ved visning. Verifisert i Chrome —
 alle 16 requestene går til egen origin.
@@ -60,6 +62,19 @@ cd .. && python3 -m http.server 8788   # → http://localhost:8788/slides/
 
 Piltaster / PgUp / PgDn / mellomrom navigerer, `R` nullstiller, tall hopper.
 Slide 14 har en 4-minutters timer du klikker for å starte.
+
+## Thumbnail-stripa
+
+`"visThumbnails": true` i `deck-config.js` gir deg kolonnen med slide-
+miniatyrer til venstre — grei når du forbereder deg, men den skal ikke være
+på lerretet. `false` er standard.
+
+`deck-stage.js` har et `no-rail`-attributt for dette, men det virker ikke
+herfra: `x-import` gjør bindestreker om til camelCase, så `no-rail` kommer
+fram som `norail` og treffer aldri `hasAttribute('no-rail')`. Vi bruker i
+stedet innstillingen `deck-stage.railVisible` i localStorage, som
+`_enableRail()` leser ved oppstart. `bygg.py` skriver den ved hver sidelast,
+så den er ikke avhengig av hva som ligger igjen i nettleseren.
 
 ## Hente kilden på nytt fra Claude Design
 

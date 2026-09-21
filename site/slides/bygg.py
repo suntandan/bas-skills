@@ -45,6 +45,14 @@ HEAD = """{banner}
 <script>
 /* Bruk vendor/-kopiene i stedet for unpkg, så decket virker uten nett. */
 window.__resources = {resources};
+/* Thumbnail-stripa til venstre. deck-stage leser denne innstillingen når
+ * den starter opp — se _enableRail() i deck-stage.js. Styres av
+ * visThumbnails i deck-config.js; vi skriver begge verdier, ellers ville
+ * en gammel «skjul» ligget igjen i nettleseren etter at flagget slås på.
+ *
+ * (`no-rail`-attributtet er den andre veien, men x-import gjør om
+ *  bindestreker til camelCase, så det kommer aldri fram til elementet.) */
+try {{ localStorage.setItem('deck-stage.railVisible', {rail}); }} catch (e) {{}}
 </script>
 <script src="./deck-config.js"></script>
 <script src="./support.js"></script>"""
@@ -54,11 +62,18 @@ FONT_LINKS = """  <link href="fonts/fonts.css" rel="stylesheet">"""
 
 def read_config():
     txt = CONFIG.read_text(encoding="utf-8")
-    m = re.search(r"window\.DK26\s*=\s*(\{.*?\})\s*;", txt, re.S)
+    m = re.search(r"window\.DK26\s*=\s*(\{.*?\n\})\s*;", txt, re.S)
     if not m:
         sys.exit(f"Fant ikke «window.DK26 = {{...}};» i {CONFIG.name}")
+    # Hele linjer med // er lov i fila, men ikke i JSON. (Bare hele linjer,
+    # så vi ikke kapper // midt i en url.)
+    body = "\n".join(
+        line for line in m.group(1).splitlines() if not line.lstrip().startswith("//")
+    )
+    # Etterfølgende komma er heller ikke lov i JSON.
+    body = re.sub(r",(\s*[}\]])", r"\1", body)
     try:
-        return json.loads(m.group(1))
+        return json.loads(body)
     except json.JSONDecodeError as e:
         sys.exit(f"{CONFIG.name} er ikke gyldig JSON i DK26-objektet: {e}")
 
@@ -103,7 +118,11 @@ def build(cfg, qr_paths):
         sys.exit("Fant ikke support.js-taggen i kilden — har formatet endret seg?")
     html = html.replace(
         old_head,
-        HEAD.format(banner=BANNER, resources=json.dumps(CDN, indent=2)),
+        HEAD.format(
+            banner=BANNER,
+            resources=json.dumps(CDN, indent=2),
+            rail="'1'" if cfg.get("visThumbnails", False) else "'0'",
+        ),
         1,
     )
 
@@ -150,6 +169,8 @@ def main():
         print("Merk: wifiPassord er tom — decket viser «[fylles inn]».")
     if not cfg.get("urlRapport", "").strip():
         print("Merk: urlRapport er tom — QR-slidet står uten kode.")
+    if cfg.get("visThumbnails", False):
+        print("Merk: thumbnail-stripa er på — skru av før presentasjon.")
 
 
 if __name__ == "__main__":
