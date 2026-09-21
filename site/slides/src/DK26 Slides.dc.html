@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&amp;family=IBM+Plex+Mono:wght@400;600&amp;display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@500,700,900&amp;display=swap" rel="stylesheet">
+  <style>
+    html,body{margin:0;height:100%;background:#111115}
+    a{color:#75270b} a:hover{color:#ff8044}
+  </style>
+</helmet>
+<x-import component-from-global-scope="deck-stage" from="./deck-stage.js" width="1920" height="1080" hint-size="100%,100%" data-uneditable="">
+
+  <!-- 1 · Tre spørsmål (modus 1) -->
+  <section data-label="01 Tre spørsmål" data-speaker-notes="Spørsmål 1 er en kort intro-runde (24 deltakere). Spørsmål 2 og 3: hender i været, tell høyt. Spørsmål 2 er premisset målt i rommet, 3 avgjør om hands-on går i terminal eller nettleser." style="background:#0b0716 url(assets/poster.jpg) center/cover;color:#e9e3ff;font-family:'IBM Plex Mono',ui-monospace,monospace;box-sizing:border-box;overflow:hidden" data-om-slide-id="e0fe421c">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(11,7,22,.72) 0%,rgba(11,7,22,.9) 60%,rgba(11,7,22,.97) 100%)"></div>
+    <div style="position:absolute;inset:0;background:repeating-linear-gradient(to bottom,rgba(0,0,0,0) 0px,rgba(0,0,0,0) 3px,rgba(0,0,0,.22) 4px,rgba(0,0,0,.22) 6px);pointer-events:none"></div>
+    <div style="position:absolute;inset:0;box-shadow:inset 0 0 220px 80px rgba(0,0,0,.85);pointer-events:none"></div>
+    <div style="position:relative;height:100%;display:flex;flex-direction:column;padding:100px 140px 80px;box-sizing:border-box">
+      <div style="display:flex;justify-content:space-between;align-items:center;font-family:'Press Start 2P',monospace;font-size:24px;color:#9a8fc4;letter-spacing:.04em;text-transform:uppercase">
+        <img src="assets/bas-logo-hvit.png" alt="Bas" style="height:40px;filter:invert(1) brightness(1.4)">
+        <span style="color:#ff5bd1;text-shadow:0 0 14px rgba(255,91,209,.6)">10:04</span>
+      </div>
+      <h1 style="margin:90px 0 60px;font-family:'Press Start 2P',monospace;font-size:46px;line-height:1.5;color:#fff;text-shadow:0 0 16px rgba(95,242,255,.5),0 0 2px #fff;font-weight:400">Tre spørsmål før vi begynner</h1>
+      <ol style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:40px;font-size:38px;line-height:1.35">
+        <li style="display:grid;grid-template-columns:70px 1fr;gap:24px"><span style="color:#5ff2ff">01</span><span>Hvem er vi? Navn, firma og system du jobber i.</span></li>
+        <li style="display:grid;grid-template-columns:70px 1fr;gap:24px"><span style="color:#5ff2ff">02</span><span>Hvem har brukt AI til noe <strong style="color:#ffb057;font-weight:600">annet enn å skrive tekst</strong> i e-postarbeidet?</span></li>
+        <li style="display:grid;grid-template-columns:70px 1fr;gap:24px"><span style="color:#5ff2ff">03</span><span>Hvem har tilgang til Claude Code eller tilsvarende?</span></li>
+      </ol>
+      <p style="margin:auto 0 0;font-size:26px;color:#9a8fc4"><span style="color:#7dffb0">$</span> {{ wifiLine }}</p>
+    </div>
+  </section>
+
+  <!-- 2 · Overskriften (modus 1) -->
+  <section data-label="02 Mottakeren eier innboksen" data-speaker-notes="Én setning. La den stå." style="background:#0b0716 url(assets/poster.jpg) center/cover;color:#e9e3ff;font-family:'IBM Plex Mono',ui-monospace,monospace;box-sizing:border-box;overflow:hidden" data-om-slide-id="60d70c44">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(11,7,22,.72) 0%,rgba(11,7,22,.9) 60%,rgba(11,7,22,.97) 100%)"></div>
+    <div style="position:absolute;inset:0;background:repeating-linear-gradient(to bottom,rgba(0,0,0,0) 0px,rgba(0,0,0,0) 3px,rgba(0,0,0,.22) 4px,rgba(0,0,0,.22) 6px);pointer-events:none"></div>
+    <div style="position:absolute;inset:0;box-shadow:inset 0 0 220px 80px rgba(0,0,0,.85);pointer-events:none"></div>
+    <div style="position:relative;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 160px 80px;box-sizing:border-box">
+      <p style="margin:0 0 48px;font-family:'Press Start 2P',monospace;font-size:24px;color:#ff5bd1;text-shadow:0 0 14px rgba(255,91,209,.6);letter-spacing:.04em">2019 → 2027</p>
+      <h1 style="margin:0 0 48px;font-size:76px;line-height:1.2;font-weight:600;color:#fff;text-shadow:0 0 22px rgba(95,242,255,.55),0 0 2px #fff;text-wrap:balance">Innboksen tilhører mottakeren.</h1>
+      <p style="margin:0;font-size:36px;line-height:1.4;color:#9a8fc4;max-width:1300px;text-wrap:pretty">Vi velger selv hvem vi vil høre fra og AI hjelper oss å sortere, oppsummere og konsumere innhold.</p>
+    </div>
+  </section>
+
+  <!-- 3 · Det som har endret seg (modus 1) -->
+  <section data-label="03 Det som har endret seg" data-speaker-notes="60–90 sekunder. Dette er alt du har å si om 2027 — og det er poenget." style="background:#0b0716 url(assets/poster.jpg) center/cover;color:#e9e3ff;font-family:'IBM Plex Mono',ui-monospace,monospace;box-sizing:border-box;overflow:hidden" data-om-slide-id="74a28f41">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(11,7,22,.78) 0%,rgba(11,7,22,.93) 60%,rgba(11,7,22,.98) 100%)"></div>
+    <div style="position:absolute;inset:0;background:repeating-linear-gradient(to bottom,rgba(0,0,0,0) 0px,rgba(0,0,0,0) 3px,rgba(0,0,0,.22) 4px,rgba(0,0,0,.22) 6px);pointer-events:none"></div>
+    <div style="position:absolute;inset:0;box-shadow:inset 0 0 220px 80px rgba(0,0,0,.85);pointer-events:none"></div>
+    <div style="position:relative;height:100%;display:flex;flex-direction:column;padding:100px 140px 80px;box-sizing:border-box">
+      <div style="display:flex;justify-content:space-between;align-items:baseline">
+        <h1 style="margin:0;font-family:'Press Start 2P',monospace;font-size:44px;line-height:1.5;color:#fff;text-shadow:0 0 16px rgba(95,242,255,.5),0 0 2px #fff;font-weight:400">Det som har endret seg</h1>
+        <span style="font-family:'Press Start 2P',monospace;font-size:24px;color:#ff5bd1;text-shadow:0 0 14px rgba(255,91,209,.6)">CHANGELOG</span>
+      </div>
+      <div style="margin-top:64px;display:flex;flex-direction:column;gap:30px;font-size:32px;line-height:1.35">
+        <div style="display:grid;grid-template-columns:48px 1fr;gap:20px"><span style="color:#7dffb0">+</span><span>Innboks-AI oppsummerer e-posten før den åpnes <span style="color:#9a8fc4">(Apple Intelligence, Gmail)</span></span></div>
+        <div style="display:grid;grid-template-columns:48px 1fr;gap:20px"><span style="color:#7dffb0">+</span><span>Én-klikks avmelding i headeren er krav for masseutsendere <span style="color:#9a8fc4">(Gmail og Yahoo, 2024)</span></span></div>
+        <div style="display:grid;grid-template-columns:48px 1fr;gap:20px"><span style="color:#7dffb0">+</span><span>SPF, DKIM og DMARC er krav, ikke anbefaling. Logo i avsenderfeltet er belønningen <span style="color:#9a8fc4">(BIMI, Apple Business Connect)</span></span></div>
+        <div style="display:grid;grid-template-columns:48px 1fr;gap:20px"><span style="color:#7dffb0">+</span><span>Innboksen sorterer for deg: faner, kategorier, prioritering</span></div>
+        <div style="display:grid;grid-template-columns:48px 1fr;gap:20px"><span style="color:#ff5bd1">−</span><span>Åpningsraten som måltall <span style="color:#9a8fc4">(Apple Mail Privacy Protection)</span></span></div>
+        <div style="display:grid;grid-template-columns:48px 1fr;gap:20px"><span style="color:#7dffb0">+</span><span>Kampanjekort i Gmail med bilde, rabatt og utløpsdato <span style="color:#9a8fc4">(schema-annotasjoner)</span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3b · BIMI (modus 1) -->
+  <section data-label="03b BIMI" data-speaker-notes="Logoen ved avsendernavnet. Virker i Gmail, Yahoo, Fastmail og Apple Mail. Krever DMARC på enforce — derfor IT først." style="background:#0b0716 url(assets/poster.jpg) center/cover;color:#e9e3ff;font-family:'IBM Plex Mono',ui-monospace,monospace;box-sizing:border-box;overflow:hidden" data-om-slide-id="d7ff0e76">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(11,7,22,.78) 0%,rgba(11,7,22,.93) 60%,rgba(11,7,22,.98) 100%)"></div>
+    <div style="position:absolute;inset:0;background:repeating-linear-gradient(to bottom,rgba(0,0,0,0) 0px,rgba(0,0,0,0) 3px,rgba(0,0,0,.22) 4px,rgba(0,0,0,.22) 6px);pointer-events:none"></div>
+    <div style="position:absolute;inset:0;box-shadow:inset 0 0 220px 80px rgba(0,0,0,.85);pointer-events:none"></div>
+    <div style="position:relative;height:100%;display:flex;flex-direction:column;padding:100px 140px 80px;box-sizing:border-box">
+      <div style="display:flex;justify-content:space-between;align-items:baseline">
+        <h1 style="margin:0;font-family:'Press Start 2P',monospace;font-size:44px;line-height:1.5;color:#fff;text-shadow:0 0 16px rgba(95,242,255,.5),0 0 2px #fff;font-weight:400">BIMI</h1>
+        <span style="font-family:'Press Start 2P',monospace;font-size:24px;color:#ff5bd1;text-shadow:0 0 14px rgba(255,91,209,.6)">Brand Indicators for Message Identification</span>
+      </div>
+      <p style="margin:36px 0 0;font-size:34px;line-height:1.35;max-width:1500px">Logoen din ved avsendernavnet, før mottakeren har åpnet noe. Gmail, Yahoo, Fastmail og Apple Mail.</p>
+      <div style="margin-top:48px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start">
+        <div style="display:flex;flex-direction:column;gap:18px">
+          <div style="display:flex;align-items:center;gap:24px;background:rgba(12,8,28,.85);border:1px solid #2a1f4d;border-radius:14px;padding:22px 28px">
+            <div style="width:76px;height:76px;border-radius:50%;background:#3a3350;display:flex;align-items:center;justify-content:center;font-size:34px;color:#9a8fc4;flex:none">B</div>
+            <div style="min-width:0;font-size:26px;line-height:1.35"><div style="color:#9a8fc4">Bas Kommunikasjon</div><div style="color:#fff;font-weight:600">Er e-postene dine klare for 2027?</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:24px;background:rgba(12,8,28,.85);border:1px solid #5ff2ff;border-radius:14px;padding:22px 28px;box-shadow:0 0 30px rgba(95,242,255,.18)">
+            <div style="width:76px;height:76px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;flex:none"><img src="assets/bas-logo-svart.png" alt="Bas" style="width:52px"></div>
+            <div style="min-width:0;font-size:26px;line-height:1.35"><div style="color:#5ff2ff">Bas Kommunikasjon <span style="color:#7dffb0">✓</span></div><div style="color:#fff;font-weight:600">Er e-postene dine klare for 2027?</div></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:24px;color:#9a8fc4;padding:0 8px"><span>uten BIMI</span><span>med BIMI</span></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:26px;font-size:28px;line-height:1.35">
+          <div style="display:grid;grid-template-columns:48px 1fr;gap:20px"><span style="color:#7dffb0">1</span><span>DMARC på <span style="color:#ffb057">quarantine</span> eller <span style="color:#ffb057">reject</span>. Uten det: ingen logo.</span></div>
+          <div style="display:grid;grid-template-columns:48px 1fr;gap:20px"><span style="color:#7dffb0">2</span><span>Logo som SVG Tiny PS, kvadratisk, lagt ut på https.</span></div>
+          <div style="display:grid;grid-template-columns:48px 1fr;gap:20px"><span style="color:#7dffb0">3</span><span>Sertifikat (VMC eller CMC) fra DigiCert eller Entrust. Koster penger, tar uker.</span></div>
+          <div style="display:grid;grid-template-columns:48px 1fr;gap:20px"><span style="color:#7dffb0">4</span><span>Én DNS-post: <span style="color:#5ff2ff">default._bimi.dittdomene.no</span> som peker på logo og sertifikat.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3b2 · Dørvakten (modus 1) -->
+  <section data-label="03b2 Hvem sjekker logoen" data-speaker-notes="Analogi: BIMI-sjekken er en dørvakt. Gmail sjekker ID og stempler hånda når e-posten kommer inn. Ser du innboksen gjennom Gmail, ser du stempelet. Legger du Gmail-kontoen inn i Apple Mail, henter appen bare selve e-postene — stempelet blir ikke med. Apple Mail prøver å sjekke ID selv, og det virker foreløpig bare for gjester som kom inn Apples egen dør (iCloud). Derfor Apple Business Connect på neste slide." style="background:#0b0716 url(assets/poster.jpg) center/cover;color:#e9e3ff;font-family:'IBM Plex Mono',ui-monospace,monospace;box-sizing:border-box;overflow:hidden" data-om-slide-id="dd68c43d">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(11,7,22,.78) 0%,rgba(11,7,22,.93) 60%,rgba(11,7,22,.98) 100%)"></div>
+    <div style="position:absolute;inset:0;background:repeating-linear-gradient(to bottom,rgba(0,0,0,0) 0px,rgba(0,0,0,0) 3px,rgba(0,0,0,.22) 4px,rgba(0,0,0,.22) 6px);pointer-events:none"></div>
+    <div style="position:absolute;inset:0;box-shadow:inset 0 0 220px 80px rgba(0,0,0,.85);pointer-events:none"></div>
+    <div style="position:relative;height:100%;display:flex;flex-direction:column;padding:100px 140px 80px;box-sizing:border-box">
+      <div style="display:flex;justify-content:space-between;align-items:baseline">
+        <h1 style="margin:0;font-family:'Press Start 2P',monospace;font-size:44px;line-height:1.5;color:#fff;text-shadow:0 0 16px rgba(95,242,255,.5),0 0 2px #fff;font-weight:400">Hvem sjekker logoen?</h1>
+        <span style="font-family:'Press Start 2P',monospace;font-size:24px;color:#ff5bd1;text-shadow:0 0 14px rgba(255,91,209,.6)">Dørvakten</span>
+      </div>
+      <div style="margin-top:56px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:36px;align-items:stretch">
+        <div style="display:flex;flex-direction:column;gap:22px;background:rgba(12,8,28,.85);border:1px solid #2a1f4d;border-radius:14px;padding:32px 34px">
+          <span style="font-size:24px;color:#9a8fc4">Gmail-konto</span>
+          <span style="font-size:24px;color:#9a8fc4">sett i <span style="color:#fff">Gmail-appen</span></span>
+          <div style="margin-top:8px;font-size:26px;line-height:1.4;flex:1">Gmail er dørvakten. Sjekker ID, stempler hånda, og det er Gmail som viser deg festen.</div>
+          <div style="display:flex;align-items:center;gap:16px;font-size:28px;color:#7dffb0"><span style="width:44px;height:44px;border-radius:50%;background:#fff;display:inline-flex;align-items:center;justify-content:center;flex:none"><img src="assets/bas-logo-svart.png" alt="" style="width:30px"></span>Logo vises</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:22px;background:rgba(12,8,28,.85);border:1px solid #ff5bd1;border-radius:14px;padding:32px 34px;box-shadow:0 0 30px rgba(255,91,209,.18)">
+          <span style="font-size:24px;color:#9a8fc4">Gmail-konto</span>
+          <span style="font-size:24px;color:#9a8fc4">sett i <span style="color:#fff">Apple Mail</span></span>
+          <div style="margin-top:8px;font-size:26px;line-height:1.4;flex:1"><div>Gjesten kom inn via Gmails dør, men Apple er dørvakten her: sjekker ID selv — men godkjenner ikke stempelet fra en annen dør.</div><div><br></div></div>
+          <div style="display:flex;align-items:center;gap:16px;font-size:28px;color:#ff5bd1"><span style="width:44px;height:44px;border-radius:50%;background:#3a3350;display:inline-flex;align-items:center;justify-content:center;flex:none;font-size:22px;color:#9a8fc4">B</span>Ingen logo</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:22px;background:rgba(12,8,28,.85);border:1px solid #2a1f4d;border-radius:14px;padding:32px 34px">
+          <span style="font-size:24px;color:#9a8fc4">iCloud-konto</span>
+          <span style="font-size:24px;color:#9a8fc4">sett i <span style="color:#fff">Apple Mail</span></span>
+          <div style="margin-top:8px;font-size:26px;line-height:1.4;flex:1">Gjesten kom inn Apples egen dør. Apple er dørvakten, sjekker ID selv og viser stempelet.</div>
+          <div style="display:flex;align-items:center;gap:16px;font-size:28px;color:#7dffb0"><span style="width:44px;height:44px;border-radius:50%;background:#fff;display:inline-flex;align-items:center;justify-content:center;flex:none"><img src="assets/bas-logo-svart.png" alt="" style="width:30px"></span>Logo vises</div>
+        </div>
+      </div>
+      <p style="margin:auto 0 0;font-size:32px;line-height:1.35;color:#ffb057;max-width:1500px;text-wrap:balance">Hvem som sjekker logoen avhenger av hvem sin dør du gikk inn, ikke hvilken app du ser innboksen gjennom.</p>
+    </div>
+  </section>
+
+  <!-- 3c · Apple Business Connect (modus 1) -->
+  <section data-label="03c Apple Business Connect" data-speaker-notes="Gratis snarvei til logo i Apple Mail (iOS 18.2 / macOS 15.2 og nyere). Egen registrering hos Apple, ikke DNS-BIMI. Dekker ikke Gmail." style="background:#0b0716 url(assets/poster.jpg) center/cover;color:#e9e3ff;font-family:'IBM Plex Mono',ui-monospace,monospace;box-sizing:border-box;overflow:hidden" data-om-slide-id="fb4e8052">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(11,7,22,.78) 0%,rgba(11,7,22,.93) 60%,rgba(11,7,22,.98) 100%)"></div>
+    <div style="position:absolute;inset:0;background:repeating-linear-gradient(to bottom,rgba(0,0,0,0) 0px,rgba(0,0,0,0) 3px,rgba(0,0,0,.22) 4px,rgba(0,0,0,.22) 6px);pointer-events:none"></div>
+    <div style="position:absolute;inset:0;box-shadow:inset 0 0 220px 80px rgba(0,0,0,.85);pointer-events:none"></div>
+    <div style="position:relative;height:100%;display:flex;flex-direction:column;padding:100px 140px 80px;box-sizing:border-box">
+      <div style="display:flex;justify-content:space-between;align-items:baseline">
+        <h1 style="margin:0;font-family:'Press Start 2P',monospace;font-size:44px;line-height:1.5;color:#fff;text-shadow:0 0 16px rgba(95,242,255,.5),0 0 2px #fff;font-weight:400">Apple Business Connect</h1>
+        <span style="font-family:'Press Start 2P',monospace;font-size:24px;color:#ff5bd1;text-shadow:0 0 14px rgba(255,91,209,.6)">Branded Mail</span>
+      </div>
+      <p style="margin:36px 0 0;font-size:34px;line-height:1.35;max-width:1500px">Apple blir dørvakt selv, uansett hvor kontoen kommer fra. Gratis, ingen sertifikat, ingen DNS-post for logoen.</p>
+      <div style="margin-top:56px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start">
+        <div style="display:flex;flex-direction:column;gap:26px;font-size:28px;line-height:1.35">
+          <div style="display:grid;grid-template-columns:48px 1fr;gap:20px"><span style="color:#7dffb0">1</span><span>Logg inn på <span style="color:#5ff2ff">businessconnect.apple.com</span> med bedriftens Apple-konto.</span></div>
+          <div style="display:grid;grid-template-columns:48px 1fr;gap:20px"><span style="color:#7dffb0">2</span><span>Verifiser avsenderdomenet. E-posten må allerede passere SPF, DKIM og DMARC.</span></div>
+          <div style="display:grid;grid-template-columns:48px 1fr;gap:20px"><span style="color:#7dffb0">3</span><span>Last opp logo og merkenavn. Apple godkjenner manuelt, noen dager.</span></div>
+          <div style="display:grid;grid-template-columns:48px 1fr;gap:20px"><span style="color:#7dffb0">4</span><span>Logoen vises i Mail på iPhone, iPad og Mac fra iOS 18.2 og macOS 15.2.</span></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:22px;font-size:26px;line-height:1.4;background:rgba(12,8,28,.85);border:1px solid #2a1f4d;border-radius:14px;padding:32px 36px">
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;color:#9a8fc4;font-size:24px;border-bottom:1px dashed #2a1f4d;padding-bottom:14px"><span></span><span>BIMI</span><span>Apple BC</span></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px"><span style="color:#9a8fc4">Pris</span><span>sertifikat, årlig</span><span style="color:#7dffb0">gratis</span></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px"><span style="color:#9a8fc4">Tid</span><span>uker</span><span style="color:#7dffb0">dager</span></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px"><span style="color:#9a8fc4">Vises i</span><span>Gmail, Yahoo, Apple Mail</span><span>kun Apple Mail</span></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px"><span style="color:#9a8fc4">Krever</span><span>DMARC enforce</span><span>DMARC enforce</span></div>
+        </div>
+      </div>
+      <p style="margin:auto 0 0;font-size:28px;color:#ffb057">Begge starter samme sted: DMARC. Det er IT-oppgaven, ikke designoppgaven.</p>
+    </div>
+  </section>
+
+  <!-- 3d · Hvem viser logoen (modus 1) -->
+  <section data-label="03d Hvem viser logoen" data-speaker-notes="Oppsummering for norske innbokser. Gmail og Apple Mail dekker det meste av privatmarkedet. Outlook viser ingen av delene — der er avsendernavn og domene alt du har. Telenor/Altibox-postkasser: ingen støtte i egne apper." style="background:#0b0716 url(assets/poster.jpg) center/cover;color:#e9e3ff;font-family:'IBM Plex Mono',ui-monospace,monospace;box-sizing:border-box;overflow:hidden" data-om-slide-id="bb6d5cdd">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(11,7,22,.78) 0%,rgba(11,7,22,.93) 60%,rgba(11,7,22,.98) 100%)"></div>
+    <div style="position:absolute;inset:0;background:repeating-linear-gradient(to bottom,rgba(0,0,0,0) 0px,rgba(0,0,0,0) 3px,rgba(0,0,0,.22) 4px,rgba(0,0,0,.22) 6px);pointer-events:none"></div>
+    <div style="position:absolute;inset:0;box-shadow:inset 0 0 220px 80px rgba(0,0,0,.85);pointer-events:none"></div>
+    <div style="position:relative;height:100%;display:flex;flex-direction:column;padding:100px 140px 80px;box-sizing:border-box">
+      <div style="display:flex;justify-content:space-between;align-items:baseline">
+        <h1 style="margin:0;font-family:'Press Start 2P',monospace;font-size:44px;line-height:1.5;color:#fff;text-shadow:0 0 16px rgba(95,242,255,.5),0 0 2px #fff;font-weight:400">Hvem viser logoen?</h1>
+        <span style="font-family:'Press Start 2P',monospace;font-size:24px;color:#ff5bd1;text-shadow:0 0 14px rgba(255,91,209,.6)">Norske innbokser</span>
+      </div>
+      <div style="margin-top:56px;background:rgba(12,8,28,.85);border:1px solid #2a1f4d;border-radius:14px;padding:12px 36px">
+        <div style="display:grid;grid-template-columns:1fr 260px 260px;gap:24px;padding:18px 0;border-bottom:1px dashed #2a1f4d;font-size:24px;color:#9a8fc4;text-transform:uppercase;letter-spacing:.06em"><span>Innboks</span><span style="text-align:center">BIMI</span><span style="text-align:center">Apple BC</span></div>
+        <div style="display:grid;grid-template-columns:1fr 260px 260px;gap:24px;padding:22px 0;border-bottom:1px solid #2a1f4d;font-size:28px;align-items:center"><span>Gmail <span style="color:#9a8fc4">· app og nett</span></span><span style="text-align:center;color:#7dffb0;font-weight:600">✓</span><span style="text-align:center;color:#9a8fc4">—</span></div>
+        <div style="display:grid;grid-template-columns:1fr 260px 260px;gap:24px;padding:22px 0;border-bottom:1px solid #2a1f4d;font-size:28px;align-items:center"><span>Apple Mail <span style="color:#9a8fc4">· iCloud-konto</span></span><span style="text-align:center;color:#7dffb0;font-weight:600">✓</span><span style="text-align:center;color:#7dffb0;font-weight:600">✓</span></div>
+        <div style="display:grid;grid-template-columns:1fr 260px 260px;gap:24px;padding:22px 0;border-bottom:1px solid #2a1f4d;font-size:28px;align-items:center"><span>Apple Mail <span style="color:#9a8fc4">· Gmail, jobb og andre konti</span></span><span style="text-align:center;color:#ff5bd1;font-weight:600">✕</span><span style="text-align:center;color:#7dffb0;font-weight:600">✓</span></div>
+        <div style="display:grid;grid-template-columns:1fr 260px 260px;gap:24px;padding:22px 0;border-bottom:1px solid #2a1f4d;font-size:28px;align-items:center"><span>Outlook <span style="color:#9a8fc4">· Windows, Mac, nett, mobil</span></span><span style="text-align:center;color:#ff5bd1;font-weight:600">✕</span><span style="text-align:center;color:#ff5bd1;font-weight:600">✕</span></div>
+        <div style="display:grid;grid-template-columns:1fr 260px 260px;gap:24px;padding:22px 0;border-bottom:1px solid #2a1f4d;font-size:28px;align-items:center"><span>Yahoo Mail</span><span style="text-align:center;color:#7dffb0;font-weight:600">✓</span><span style="text-align:center;color:#9a8fc4">—</span></div>
+        <div style="display:grid;grid-template-columns:1fr 260px 260px;gap:24px;padding:22px 0;font-size:28px;align-items:center"><span>Telenor, Altibox og andre norske postkasser <span style="color:#9a8fc4">· egne apper og nett</span></span><span style="text-align:center;color:#ff5bd1;font-weight:600">✕</span><span style="text-align:center;color:#ff5bd1;font-weight:600">✕</span></div>
+      </div>
+      <p style="margin:auto 0 0;font-size:28px;line-height:1.4;color:#ffb057;max-width:1500px;text-wrap:balance">Gmail og Apple Mail dekker det meste av privatinnboksen i Norge. Jobbinnboksen er Outlook, og der finnes det ingen logo å vise.</p>
+    </div>
+  </section>
+
+  <!-- 3e · Mottakeren får mer kontroll (modus 1) -->
+  <section data-label="03e Mottakeren får mer kontroll" data-speaker-notes="Tilbake til slide 2: innboksen tilhører mottakeren. Alle tre punktene gjør det lettere for mottakeren å ha oversikt og kontroll. Neste slide er det fjerde punktet — og det som gjelder e-postene du allerede har sendt. 45 sek." style="background:#0b0716 url(assets/poster.jpg) center/cover;color:#e9e3ff;font-family:'IBM Plex Mono',ui-monospace,monospace;box-sizing:border-box;overflow:hidden" data-om-slide-id="e67b22ed">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(11,7,22,.78) 0%,rgba(11,7,22,.93) 60%,rgba(11,7,22,.98) 100%)"></div>
+    <div style="position:absolute;inset:0;background:repeating-linear-gradient(to bottom,rgba(0,0,0,0) 0px,rgba(0,0,0,0) 3px,rgba(0,0,0,.22) 4px,rgba(0,0,0,.22) 6px);pointer-events:none"></div>
+    <div style="position:absolute;inset:0;box-shadow:inset 0 0 220px 80px rgba(0,0,0,.85);pointer-events:none"></div>
+    <div style="position:relative;height:100%;display:flex;flex-direction:column;padding:100px 140px 80px;box-sizing:border-box">
+      <div style="display:flex;justify-content:space-between;align-items:baseline">
+        <h1 style="margin:0;font-family:'Press Start 2P',monospace;font-size:44px;line-height:1.5;color:#fff;text-shadow:0 0 16px rgba(95,242,255,.5),0 0 2px #fff;font-weight:400">Mottakeren får mer kontroll</h1>
+        <span style="font-family:'Press Start 2P',monospace;font-size:24px;color:#ff5bd1;text-shadow:0 0 14px rgba(255,91,209,.6)">1 / 2</span>
+      </div>
+      <div style="margin-top:72px;display:flex;flex-direction:column;gap:52px;max-width:1500px">
+        <div style="display:grid;grid-template-columns:56px 1fr;gap:24px;align-items:start"><span style="color:#7dffb0;font-size:40px;line-height:1.1">+</span><span><span style="display:block;font-size:36px;font-weight:600;color:#fff;line-height:1.3">Én-klikks avmelding</span><span style="display:block;margin-top:10px;font-size:28px;line-height:1.4;color:#c9c2e6">Krav fra Gmail og Yahoo for alle som sender i volum. Like lett å slutte å høre fra deg som det var å begynne.</span></span></div>
+        <div style="display:grid;grid-template-columns:56px 1fr;gap:24px;align-items:start"><span style="color:#7dffb0;font-size:40px;line-height:1.1">+</span><span><span style="display:block;font-size:36px;font-weight:600;color:#fff;line-height:1.3">Innboksen sorterer</span><span style="display:block;margin-top:10px;font-size:28px;line-height:1.4;color:#c9c2e6">Gmail-faner, Apple Mail-kategorier, prioritert innboks. Nyhetsbrevet lander i «Kampanjer», sammen med alle de andre.</span></span></div>
+        <div style="display:grid;grid-template-columns:56px 1fr;gap:24px;align-items:start"><span style="color:#7dffb0;font-size:40px;line-height:1.1">+</span><span><span style="display:block;font-size:36px;font-weight:600;color:#fff;line-height:1.3">Gmail løfter fram innhold</span><span style="display:block;margin-top:10px;font-size:28px;line-height:1.4;color:#c9c2e6">Kampanjekort med bilde, rabattkode og utløpsdato, hentet fra åpen markup i e-posten. Gratis. Gmail bestemmer når det vises.</span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3e2 · E-posten lever videre (modus 1) -->
+  <section data-label="03e2 E-posten lever videre" data-speaker-notes="Apple Mail i iOS 27 har fått ny søk: rangerer på relevans, ikke bare dato, og med AI-funksjoner på nyere iPhone. Folk søker allerede etter bekreftelser, rabattkoder og nyhetsbrev de husker vagt. Poenget for 2027: e-posten du sender i september blir funnet i mars. Forbehold: AI-delen er ikke i EU ved lansering, og Apple har ikke forklart rangeringen — ingen «SEO for innboksen» ennå. Spør salen: kunne du funnet din egen kampanje fra i fjor med det du husker om den? 60 sek." style="background:#0b0716 url(assets/poster.jpg) center/cover;color:#e9e3ff;font-family:'IBM Plex Mono',ui-monospace,monospace;box-sizing:border-box;overflow:hidden" data-om-slide-id="daaefd14">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(11,7,22,.78) 0%,rgba(11,7,22,.93) 60%,rgba(11,7,22,.98) 100%)"></div>
+    <div style="position:absolute;inset:0;background:repeating-linear-gradient(to bottom,rgba(0,0,0,0) 0px,rgba(0,0,0,0) 3px,rgba(0,0,0,.22) 4px,rgba(0,0,0,.22) 6px);pointer-events:none"></div>
+    <div style="position:absolute;inset:0;box-shadow:inset 0 0 220px 80px rgba(0,0,0,.85);pointer-events:none"></div>
+    <div style="position:relative;height:100%;display:flex;flex-direction:column;padding:100px 140px 80px;box-sizing:border-box">
+      <div style="display:flex;justify-content:space-between;align-items:baseline">
+        <h1 style="margin:0;font-family:'Press Start 2P',monospace;font-size:44px;line-height:1.5;color:#fff;text-shadow:0 0 16px rgba(95,242,255,.5),0 0 2px #fff;font-weight:400">E-posten lever videre</h1>
+        <span style="font-family:'Press Start 2P',monospace;font-size:24px;color:#ff5bd1;text-shadow:0 0 14px rgba(255,91,209,.6)">iOS 27</span>
+      </div>
+      <div style="margin-top:56px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start">
+        <div style="display:flex;flex-direction:column;gap:40px">
+          <div style="display:grid;grid-template-columns:56px 1fr;gap:24px;align-items:start"><span style="color:#7dffb0;font-size:40px;line-height:1.1">+</span><span><span style="display:block;font-size:36px;font-weight:600;color:#fff;line-height:1.3">Apple Mail rangerer søk på relevans, ikke dato</span><span style="display:block;margin-top:10px;font-size:28px;line-height:1.4;color:#c9c2e6">Virker på alle iPhoner med iOS 27. Ingen AI påkrevd.</span></span></div>
+          <div style="display:grid;grid-template-columns:56px 1fr;gap:24px;align-items:start"><span style="color:#7dffb0;font-size:40px;line-height:1.1">+</span><span><span style="display:block;font-size:36px;font-weight:600;color:#fff;line-height:1.3">Septemberkampanjen din blir funnet i mars</span><span style="display:block;margin-top:10px;font-size:28px;line-height:1.4;color:#c9c2e6">Skjønner de når det var? Virker lenken? Sier landingssiden at det er over?</span></span></div>
+          <div style="display:grid;grid-template-columns:56px 1fr;gap:24px;align-items:start"><span style="color:#ffb057;font-size:40px;line-height:1.1">!</span><span><span style="display:block;font-size:36px;font-weight:600;color:#fff;line-height:1.3">Ingen «SEO for innboksen» ennå</span><span style="display:block;margin-top:10px;font-size:28px;line-height:1.4;color:#c9c2e6">Apple har ikke forklart rangeringen. AI-laget over søket er engelsk-bare ved lansering.</span></span></div>
+        </div>
+        <div style="background:rgba(12,8,28,.85);border:1px solid #2a1f4d;border-radius:14px;padding:40px 44px;display:flex;flex-direction:column;gap:28px">
+          <span style="font-size:24px;color:#9a8fc4;text-transform:uppercase;letter-spacing:.06em">Sjekk i dag</span>
+          <div style="display:flex;flex-direction:column;gap:20px;font-size:28px;line-height:1.4">
+            <span><span style="color:#5ff2ff">01</span>&nbsp; Dato, pris, kode og sted som tekst, ikke bare i bildet</span>
+            <span><span style="color:#5ff2ff">02</span>&nbsp; Frister med årstall</span>
+            <span><span style="color:#5ff2ff">03</span>&nbsp; Landingssiden forklarer at tilbudet er over</span>
+            <span><span style="color:#5ff2ff">04</span>&nbsp; Emne og preheader sier hva det handler om</span>
+            <span><span style="color:#5ff2ff">05</span>&nbsp; Søk opp dine tre siste utsendelser med det du husker</span>
+          </div>
+        </div>
+      </div>
+      <p style="margin:auto 0 0;font-size:32px;line-height:1.4;color:#ffb057;max-width:1560px;text-wrap:balance">Du planlegger for sendedagen. Mottakeren finner e-posten igjen når den passer dem.</p>
+    </div>
+  </section>
+
+  <!-- 3f · Du får færre signaler (modus 1) -->
+  <section data-label="03f Du får færre signaler" data-speaker-notes="Samme skifte sett fra avsenderen. Åpningsraten er ikke borte — den brukes fortsatt relativt i reiser — men den er upålitelig. Paradokset i bunnlinja er poenget. Innboks-AI: egen blokk 11:12, bare nevn det. 60 sek." style="background:#0b0716 url(assets/poster.jpg) center/cover;color:#e9e3ff;font-family:'IBM Plex Mono',ui-monospace,monospace;box-sizing:border-box;overflow:hidden" data-om-slide-id="488a6da5">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(11,7,22,.78) 0%,rgba(11,7,22,.93) 60%,rgba(11,7,22,.98) 100%)"></div>
+    <div style="position:absolute;inset:0;background:repeating-linear-gradient(to bottom,rgba(0,0,0,0) 0px,rgba(0,0,0,0) 3px,rgba(0,0,0,.22) 4px,rgba(0,0,0,.22) 6px);pointer-events:none"></div>
+    <div style="position:absolute;inset:0;box-shadow:inset 0 0 220px 80px rgba(0,0,0,.85);pointer-events:none"></div>
+    <div style="position:relative;height:100%;display:flex;flex-direction:column;padding:100px 140px 80px;box-sizing:border-box">
+      <div style="display:flex;justify-content:space-between;align-items:baseline">
+        <h1 style="margin:0;font-family:'Press Start 2P',monospace;font-size:44px;line-height:1.5;color:#fff;text-shadow:0 0 16px rgba(95,242,255,.5),0 0 2px #fff;font-weight:400">Du får færre signaler</h1>
+        <span style="font-family:'Press Start 2P',monospace;font-size:24px;color:#ff5bd1;text-shadow:0 0 14px rgba(255,91,209,.6)">2 / 2</span>
+      </div>
+      <div style="margin-top:72px;display:flex;flex-direction:column;gap:52px;max-width:1500px">
+        <div style="display:grid;grid-template-columns:56px 1fr;gap:24px;align-items:start"><span style="color:#ff5bd1;font-size:40px;line-height:1.1">−</span><span><span style="display:block;font-size:36px;font-weight:600;color:#fff;line-height:1.3">Åpningsraten er upålitelig</span><span style="display:block;margin-top:10px;font-size:28px;line-height:1.4;color:#c9c2e6">Apple Mail laster bildene på forhånd. Tallet finnes fortsatt, men det sier ikke lenger hvem som leste.</span></span></div>
+        <div style="display:grid;grid-template-columns:56px 1fr;gap:24px;align-items:start"><span style="color:#ff5bd1;font-size:40px;line-height:1.1">−</span><span><span style="display:block;font-size:36px;font-weight:600;color:#fff;line-height:1.3">Spam-klagene er anonyme</span><span style="display:block;margin-top:10px;font-size:28px;line-height:1.4;color:#c9c2e6">Gmail viser dem bare som samlet prosent i Postmaster Tools. Du får vite at noen klaget, ikke hvem eller på hva.</span></span></div>
+        <div style="display:grid;grid-template-columns:56px 1fr;gap:24px;align-items:start"><span style="color:#ff5bd1;font-size:40px;line-height:1.1">−</span><span><span style="display:block;font-size:36px;font-weight:600;color:#fff;line-height:1.3">Samtidig bes du om å være mer relevant</span><span style="display:block;margin-top:10px;font-size:28px;line-height:1.4;color:#c9c2e6">Send til folk som vil høre fra deg, om det de vil høre om. Med færre data om hva det er.</span></span></div>
+      </div>
+      <p style="margin:auto 0 0;font-size:32px;line-height:1.4;color:#ffb057;max-width:1560px;text-wrap:balance">Vi bes om å være mer personlige for folk som vil høre fra oss, og får færre signaler om hva de faktisk vil høre.</p>
+    </div>
+  </section>
+
+  <!-- 3g · Når signalene forsvinner (modus 1) -->
+  <section data-label="03g Når signalene forsvinner" data-speaker-notes="Svaret på paradokset. Én-klikks avmelding er det reneste signalet du har. Åpningsrate bare relativt. Kolonne 3 er broen til resten av dagen: når innboksen forteller deg mindre etterpå, må du vite mer på forhånd — det er det verktøyene gjør. 90 sek." style="background:#0b0716 url(assets/poster.jpg) center/cover;color:#e9e3ff;font-family:'IBM Plex Mono',ui-monospace,monospace;box-sizing:border-box;overflow:hidden" data-om-slide-id="07bf69d2">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(11,7,22,.78) 0%,rgba(11,7,22,.93) 60%,rgba(11,7,22,.98) 100%)"></div>
+    <div style="position:absolute;inset:0;background:repeating-linear-gradient(to bottom,rgba(0,0,0,0) 0px,rgba(0,0,0,0) 3px,rgba(0,0,0,.22) 4px,rgba(0,0,0,.22) 6px);pointer-events:none"></div>
+    <div style="position:absolute;inset:0;box-shadow:inset 0 0 220px 80px rgba(0,0,0,.85);pointer-events:none"></div>
+    <div style="position:relative;height:100%;display:flex;flex-direction:column;padding:100px 140px 80px;box-sizing:border-box">
+      <div style="display:flex;justify-content:space-between;align-items:baseline">
+        <h1 style="margin:0;font-family:'Press Start 2P',monospace;font-size:44px;line-height:1.5;color:#fff;text-shadow:0 0 16px rgba(95,242,255,.5),0 0 2px #fff;font-weight:400">Når signalene forsvinner</h1>
+        <span style="font-family:'Press Start 2P',monospace;font-size:24px;color:#ff5bd1;text-shadow:0 0 14px rgba(255,91,209,.6)">2027</span>
+      </div>
+      <div style="margin-top:64px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;align-items:start">
+        <div style="display:flex;flex-direction:column;gap:22px;border-left:2px solid #5ff2ff;padding-left:32px">
+          <span style="font-size:34px;font-weight:600;color:#5ff2ff;line-height:1.3">Mål dette</span>
+          <div style="display:flex;flex-direction:column;gap:14px;font-size:27px;line-height:1.4">
+            <span>Klikk per mottaker</span>
+            <span>Svar og handling etter klikk</span>
+            <span>Avmelding og klagerate</span>
+            <span>Andel som har klikket siste 90 dager</span>
+            <span style="color:#9a8fc4">Åpningsrate: bare relativt, A mot B</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:22px;border-left:2px solid #7dffb0;padding-left:32px">
+          <span style="font-size:34px;font-weight:600;color:#7dffb0;line-height:1.3">Spør direkte</span>
+          <div style="display:flex;flex-direction:column;gap:14px;font-size:27px;line-height:1.4">
+            <span>Preferanser og interesser, sagt av mottakeren selv</span>
+            <span>Quiz og valg inne i e-posten</span>
+            <span>Avmeldingen er et svar, ikke et tap</span>
+            <span style="color:#9a8fc4">Segmenter på det folk har sagt og gjort</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:22px;border-left:2px solid #ffb057;padding-left:32px">
+          <span style="font-size:34px;font-weight:600;color:#ffb057;line-height:1.3">Test før du sender</span>
+          <div style="display:flex;flex-direction:column;gap:14px;font-size:27px;line-height:1.4">
+            <span>Hva sier innboks-AI-en om e-posten din?</span>
+            <span>Hvem ser logoen, hvem ser rute 1?</span>
+            <span>Avsender, autentisering, avmeldingsheader</span>
+            <span style="color:#9a8fc4">Resten av dagen handler om dette</span>
+          </div>
+        </div>
+      </div>
+      <p style="margin:auto 0 0;font-size:34px;line-height:1.35;color:#fff;max-width:1500px;text-wrap:balance">Innboksen forteller deg mindre etterpå. <span style="color:#ffb057">Da må du vite mer på forhånd.</span></p>
+    </div>
+  </section>
+
+  <!-- 4 · Vendepunktet (modus 2) -->
+  <section data-label="04 Vendepunktet" data-speaker-notes="Stilskiftet skjer her. Klippet er nok. Pause etter første linje. Så: det som har endret seg mest står ikke i innboksen — det er hva du får til selv. Kampanjebilder uten designerkø, QA før send, avanserte e-poster satt opp på et blunk. Neste slide viser hva det kostet." style="background:#f4f0ef;color:#111115;font-family:Satoshi,Helvetica,Arial,sans-serif;box-sizing:border-box;display:flex;flex-direction:column;padding:100px 140px 80px" data-om-slide-id="01fc6a65">
+    <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:56px;max-width:1500px">
+      <p style="margin:0;font-size:40px;line-height:1.3;font-weight:500;color:#807774;text-wrap:balance">Det er egentlig alt som er "nytt" i e-postkanalen for 2027.</p>
+      <h1 style="margin:0;font-size:68px;line-height:1.15;font-weight:700;letter-spacing:-.01em;text-wrap:balance">Det som har endret seg mest, ser vi ikke i innboksen. <span style="color: rgb(117, 39, 11);">Det er hvordan vi jobber.</span></h1>
+      <p style="margin:0;font-size:36px;line-height:1.35;font-weight:500;color:#807774;text-wrap:pretty">Kampanjebilder uten designerkø. <br data-om-id="36db1e26:328">Kvalitetssikre e-postene før vi sender. <br data-om-id="36db1e26:329">Avanserte e-poster satt opp på et blunk. <br data-om-id="36db1e26:330">Èn person, med "team" rundt seg av agenter.</p>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;font-size:26px;color:#807774"><img src="assets/bas-logo-svart.png" alt="Bas" style="height:36px"><span>10:18</span></div>
+  </section>
+
+  <!-- 4b · Invitasjonen i innboksen (demo-cue) -->
+  
+
+  <!-- 6 · Kartet -->
+  <section data-label="06 Resten av dagen" data-speaker-notes="To halvdeler: først hva som finnes, så hvordan det bygges. Kortet fylles ut FØR pausen — det er råmaterialet for andre halvdel." style="background:#f4f0ef;color:#111115;font-family:Satoshi,Helvetica,Arial,sans-serif;box-sizing:border-box;display:flex;flex-direction:column;padding:100px 140px 80px" data-om-slide-id="8ad2072b">
+    <h1 style="margin:0 0 56px;font-size:64px;line-height:1.15;font-weight:700;letter-spacing:-.01em">Resten av dagen</h1>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start">
+      <div style="display:flex;flex-direction:column">
+        <span style="font-size:24px;color:#807774;text-transform:uppercase;letter-spacing:.08em;padding-bottom:18px;border-bottom:2px solid #d9d2cf">Første halvdel · hva som finnes</span>
+        <div style="display:grid;grid-template-columns:150px 1fr;gap:24px;padding:24px 0;border-bottom:1px solid #e3ddda;font-size:34px;line-height:1.3"><span style="color:#75270b;font-weight:700">10:22</span><span>Fem verktøy, fem friksjonspunkter. Demo-runde.</span></div>
+        <div style="display:grid;grid-template-columns:150px 1fr;gap:24px;padding:24px 0;border-bottom:1px solid #e3ddda;font-size:34px;line-height:1.3"><span style="color:#75270b;font-weight:700">10:42</span><span>Hva de kostet å bygge</span></div>
+        <div style="display:grid;grid-template-columns:150px 1fr;gap:24px;padding:24px 0;border-bottom:1px solid #e3ddda;font-size:34px;line-height:1.3"><span style="color:#75270b;font-weight:700">10:45</span><span>Ditt eget friksjonspunkt. Kortet.</span></div>
+        <div style="display:grid;grid-template-columns:150px 1fr;gap:24px;padding:24px 0;font-size:34px;line-height:1.3;color:#807774"><span style="font-weight:700">10:52</span><span>Pause</span></div>
+      </div>
+      <div style="display:flex;flex-direction:column">
+        <span style="font-size:24px;color:#807774;text-transform:uppercase;letter-spacing:.08em;padding-bottom:18px;border-bottom:2px solid #d9d2cf">Andre halvdel · hvordan det bygges</span>
+        <div style="display:grid;grid-template-columns:150px 1fr;gap:24px;padding:24px 0;border-bottom:1px solid #e3ddda;font-size:34px;line-height:1.3"><span style="color:#75270b;font-weight:700">10:57</span><span>Deres e-poster gjennom preflight</span></div>
+        <div style="display:grid;grid-template-columns:150px 1fr;gap:24px;padding:24px 0;border-bottom:1px solid #e3ddda;font-size:34px;line-height:1.3"><span style="color:#75270b;font-weight:700">11:12</span><span>Innboks-AI og preheaderen. Ti minutter på egen e-post.</span></div>
+        <div style="display:grid;grid-template-columns:150px 1fr;gap:24px;padding:24px 0;border-bottom:1px solid #e3ddda;font-size:34px;line-height:1.3"><span style="color:#75270b;font-weight:700">11:27</span><span>Slik bygges det. Mine, så deres, priset i dager.</span></div>
+        <div style="display:grid;grid-template-columns:150px 1fr;gap:24px;padding:24px 0;font-size:34px;line-height:1.3"><span style="color:#75270b;font-weight:700">11:45</span><span>Installer sammen</span></div>
+      </div>
+    </div>
+    <p style="margin:auto 0 48px;font-size:34px;line-height:1.3;font-weight:700;color:#807774">Alt handler om AI som gjør noe annet enn å skrive tekst.</p>
+    <div style="display:flex;justify-content:space-between;align-items:center;font-size:26px;color:#807774"><img src="assets/bas-logo-svart.png" alt="Bas" style="height:36px"><span>10:22</span></div>
+  </section>
+
+  <!-- 5a · Demo-runden -->
+  
+
+  <!-- B1 · Rute 0-regelen -->
+  
+
+  <!-- B2 · Tre trinn av bevegelse -->
+  
+
+  <!-- 5 · Byggekostnadstavlen (10:42, etter demo-runden) -->
+  
+
+  <!-- B10 · Kortet + timer -->
+  <section data-label="5c Ditt friksjonspunkt" data-speaker-notes="FØR pausen. 4 min stille utfylling — klikk på tallet for nedtelling. Samle inn eller fotografer kortene; les dem i pausen og plukk 3–4 til 11:27. Klikk igjen for å nullstille." style="background:#f4f0ef;color:#111115;font-family:Satoshi,Helvetica,Arial,sans-serif;box-sizing:border-box;display:flex;flex-direction:column;padding:100px 140px 80px" data-om-slide-id="e341a177">
+    <div style="flex:1;display:grid;grid-template-columns:1fr 560px;gap:80px;align-items:center">
+      <div>
+        <h1 style="margin:0 0 48px;font-size:56px;line-height:1.15;font-weight:700;letter-spacing:-.01em">Ditt friksjonspunkt</h1>
+        <ol style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:32px;font-size:32px;line-height:1.3">
+          <li><strong style="font-weight:700;display:block">Mitt friksjonspunkt.</strong><span style="color:#807774">Hva tar for lang tid?</span></li>
+          <li><strong style="font-weight:700;display:block">Hvem gjør det i dag.</strong><span style="color:#807774">Meg / designer / byrå / ingen, det bare blir liggende.</span></li>
+          <li><strong style="font-weight:700;display:block">Hva et verktøy måtte gjøre.</strong><span style="color:#807774">Én setning.</span></li>
+          <li><strong style="font-weight:700;display:block">Hvor mye tid går tapt per uke.</strong><span style="color:#807774">Et røft anslag i timer.</span></li>
+        </ol>
+      </div>
+      <div onClick="{{ toggleTimer }}" style="cursor:pointer;background:#111115;color:#f4f0ef;border-radius:36px;height:420px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;user-select:none">
+        <span style="font-size:160px;line-height:1;font-weight:700;letter-spacing:-.03em;font-variant-numeric:tabular-nums">{{ timerText }}</span>
+        <span style="font-size:26px;color:#ff8044">{{ timerHint }}</span>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;font-size:26px;color:#807774"><img src="assets/bas-logo-svart.png" alt="Bas" style="height:36px"><span>10:45</span></div>
+  </section>
+
+  <!-- B3 · Pause -->
+  <section data-label="B3 Pause" style="background:#111115;color:#f4f0ef;font-family:Satoshi,Helvetica,Arial,sans-serif;box-sizing:border-box;display:flex;flex-direction:column;padding:100px 140px 80px" data-speaker-notes="" data-om-slide-id="46915712">
+    <div style="flex:1;display:flex;flex-direction:column;justify-content:center">
+      <h1 style="margin:0;font-size:120px;line-height:1.05;font-weight:700;letter-spacing:-.02em">Pause.</h1>
+      <p style="margin:24px 0 0;font-size:64px;line-height:1.2;font-weight:500;color:#ff8044">Vi begynner 10:57.</p>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;font-size:26px;color:#807774"><img src="assets/bas-logo-hvit.png" alt="Bas" style="height:36px;filter:invert(1)"><span>{{ wifiLine }}</span></div>
+  </section>
+
+  <!-- B4 · QR: din rapport -->
+  <section data-label="B4 Din preflight-rapport" style="background:#f4f0ef;color:#111115;font-family:Satoshi,Helvetica,Arial,sans-serif;box-sizing:border-box;display:flex;flex-direction:column;padding:100px 140px 80px" data-speaker-notes="" data-om-slide-id="47b90e20">
+    <div style="flex:1;display:grid;grid-template-columns:1fr 620px;gap:100px;align-items:center">
+      <div style="display:flex;flex-direction:column;gap:32px">
+        <h1 style="margin:0;font-size:68px;line-height:1.15;font-weight:700;letter-spacing:-.01em">Din preflight-rapport</h1>
+        <p style="margin:0;font-size:38px;line-height:1.35;color:#807774;text-wrap:pretty">Lesetilgang, ingen innlogging.<br>Slettes i kveld.</p>
+      </div>
+      <sc-if value="{{ hasQrRapport }}" hint-placeholder-val="{{ false }}"><div role="img" aria-label="QR til rapportene" style="width:620px;height:620px;border-radius:32px;background:#fef6ed url({{ qrRapport }}) center/cover"></div></sc-if>
+      <sc-if value="{{ noQrRapport }}" hint-placeholder-val="{{ true }}"></sc-if>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;font-size:26px;color:#807774"><img src="assets/bas-logo-svart.png" alt="Bas" style="height:36px"><span>10:57</span></div>
+  </section>
+
+  <!-- B5 · DMARC først -->
+  
+
+  <!-- B6 · Sammendraget -->
+  <section data-label="B6 Sammendraget er den nye preheaderen" style="background:#f4f0ef;color:#111115;font-family:Satoshi,Helvetica,Arial,sans-serif;box-sizing:border-box;display:flex;flex-direction:column;padding:100px 140px 80px" data-speaker-notes="" data-om-slide-id="d672b442">
+    <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:60px;max-width:1500px">
+      <h1 style="margin:0;font-size:72px;line-height:1.15;font-weight:700;letter-spacing:-.01em">Sammendraget er den nye preheaderen.</h1>
+      <p style="margin:0;font-size:46px;line-height:1.3;font-weight:500;color:#807774;text-wrap:balance">Emnefeltet står. Forhåndsteksten under blir byttet ut. Du skriver den ikke lenger. <span style="color:#75270b">Du kan bare påvirke det.</span></p>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;font-size:26px;color:#807774"><img src="assets/bas-logo-svart.png" alt="Bas" style="height:36px"><span>11:12</span></div>
+  </section>
+
+  <!-- B7 · Preheader A/B/C -->
+  
+
+  <!-- B8 · Preheader-sjekklista -->
+  <section data-label="B8 Preheader-sjekklista" style="background:#f4f0ef;color:#111115;font-family:Satoshi,Helvetica,Arial,sans-serif;box-sizing:border-box;display:flex;flex-direction:column;padding:100px 140px 80px" data-speaker-notes="" data-om-slide-id="69d64055">
+    <h1 style="margin:0 0 56px;font-size:64px;line-height:1.15;font-weight:700;letter-spacing:-.01em">Preheader-sjekklista</h1>
+    <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:34px;font-size:38px;line-height:1.3">
+      <li style="display:grid;grid-template-columns:64px 1fr;gap:24px"><span style="color:#75270b">—</span><span>40–130 tegn er synlig. Viktigst først.</span></li>
+      <li style="display:grid;grid-template-columns:64px 1fr;gap:24px"><span style="color:#75270b">—</span><span>Aldri «Kan du ikke se denne e-posten» som første tekst.</span></li>
+      <li style="display:grid;grid-template-columns:64px 1fr;gap:24px"><span style="color:#75270b">—</span><span>Ikke gjenta emnefeltet.</span></li>
+      <li style="display:grid;grid-template-columns:64px 1fr;gap:24px"><span style="color:#75270b">—</span><span>Fyll resten med usynlige tegn så brødteksten ikke lekker inn.</span></li>
+      <li style="display:grid;grid-template-columns:64px 1fr;gap:24px"><span style="color:#75270b">—</span><strong style="font-weight:700;color:#75270b">Test med innboks-AI, ikke med øyet.</strong></li>
+    </ul>
+    <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;font-size:26px;color:#807774"><img src="assets/bas-logo-svart.png" alt="Bas" style="height:36px"><span>11:16</span></div>
+  </section>
+
+  <!-- B9 · Oppgaven -->
+  
+
+  <!-- B10 · Slik bygges det -->
+  
+
+  <!-- B11 · Installer sammen -->
+  
+
+  <!-- B12 · Siste linje -->
+  <section data-label="B12 Siste linje" style="background:#111115;color:#f4f0ef;font-family:Satoshi,Helvetica,Arial,sans-serif;box-sizing:border-box;display:flex;flex-direction:column;padding:100px 140px 80px" data-speaker-notes="" data-om-slide-id="fea5f7ae">
+    <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:44px;max-width:1500px">
+      <p style="margin:0;font-size:50px;line-height:1.25;font-weight:500;color:#807774;text-wrap:balance">Ikke noe nytt i e-postkanalen i dag.</p>
+      <p style="margin:0;font-size:50px;line-height:1.25;font-weight:500;text-wrap:balance">Du har fått vite hva én person rekker på en dag, i samtale med en maskin.</p>
+      <p style="margin:0;font-size:60px;line-height:1.2;font-weight:700;color:#ff8044;text-wrap:balance">Den personen kan godt være deg.</p>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;font-size:26px;color:#807774"><img src="assets/bas-logo-hvit.png" alt="Bas" style="height:36px;filter:invert(1)"><span>11:58</span></div>
+  </section>
+
+</x-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;wifiPassord&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Åpne felter&quot;},&quot;urlPrompt&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Åpne felter&quot;},&quot;urlRapport&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Åpne felter&quot;},&quot;urlRepo&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Åpne felter&quot;}}">
+class Component extends DCLogic {
+  state = { remaining: 240, running: false };
+  componentWillUnmount() { clearInterval(this._t); }
+  qr(url) { return url ? 'https://api.qrserver.com/v1/create-qr-code/?size=800x800&margin=1&color=111115&bgcolor=fef6ed&data=' + encodeURIComponent(url) : null; }
+  renderVals() {
+    const p = this.props;
+    const pw = p.wifiPassord || '[fylles inn]';
+    const qrPrompt = this.qr(p.urlPrompt), qrRapport = this.qr(p.urlRapport), qrRepo = this.qr(p.urlRepo);
+    const m = Math.floor(this.state.remaining / 60), s = this.state.remaining % 60;
+    return {
+      wifiLine: 'Wifi: Y3_Gjest · passord: ' + pw,
+      qrPrompt, hasQrPrompt: !!qrPrompt, noQrPrompt: !qrPrompt,
+      qrRapport, hasQrRapport: !!qrRapport, noQrRapport: !qrRapport,
+      qrRepo, hasQrRepo: !!qrRepo, noQrRepo: !qrRepo,
+      timerText: m + ':' + (s < 10 ? '0' : '') + s,
+      timerHint: this.state.running ? 'klikk for å nullstille' : (this.state.remaining === 0 ? 'tiden er ute · klikk for å nullstille' : 'fire minutter · klikk for å starte'),
+      toggleTimer: () => {
+        if (this.state.running || this.state.remaining === 0) {
+          clearInterval(this._t);
+          this.setState({ remaining: 240, running: false });
+        } else {
+          this.setState({ running: true });
+          this._t = setInterval(() => this.setState(st => {
+            if (st.remaining <= 1) { clearInterval(this._t); return { remaining: 0, running: false }; }
+            return { remaining: st.remaining - 1 };
+          }), 1000);
+        }
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

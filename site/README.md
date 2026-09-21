@@ -30,6 +30,15 @@ cd site/materiell/filer && zip -q -X startprompter-dk26.zip *.md
 Husk å oppdatere `~X kB` i `index.html` hvis filstørrelsene endrer seg
 merkbart.
 
+## slides/
+
+DK26-presentasjonen (19 slides) som frittstående statisk side. Publisert på
+`work.bas.no/dk26/slides/` — last opp hele `slides/`-mappa som den er.
+
+Kilden ligger i Claude Design; `slides/bygg.py` pakker den om så den virker
+uten editoren og uten nett. Se [`slides/README.md`](slides/README.md) for
+config, bygging og re-import.
+
 Lokal forhåndsvisning:
 
 ```bash
