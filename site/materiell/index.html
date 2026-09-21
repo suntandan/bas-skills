@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Materiell · DK26</title>
+<meta name="description" content="Startprompter fra Dialogkonferansen 2026. Last ned, lim inn i Claude Code, bytt ut det som står i klammer.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0716;
+    --panel: rgba(12, 8, 28, .82);
+    --line: #2a1f4d;
+    --cyan: #5ff2ff;
+    --pink: #ff5bd1;
+    --orange: #ffb057;
+    --green: #7dffb0;
+    --text: #e9e3ff;
+    --dim: #9a8fc4;
+    --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    --pixel: "Press Start 2P", "IBM Plex Mono", ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { min-height: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--mono);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---------- background layers (no video: gradient + grid) ---------- */
+  .bg-grad {
+    position: fixed; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 0%, rgba(255,91,209,.22), transparent 60%),
+      radial-gradient(ellipse 70% 60% at 85% 15%, rgba(95,242,255,.18), transparent 60%),
+      radial-gradient(ellipse 90% 70% at 50% 110%, rgba(255,176,87,.14), transparent 65%),
+      linear-gradient(180deg, #140a2b 0%, #0b0716 55%, #06040f 100%);
+  }
+  .bg-grid {
+    position: fixed; inset: -20% -20% 0 -20%; z-index: 1;
+    background-image:
+      linear-gradient(rgba(95,242,255,.16) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(95,242,255,.16) 1px, transparent 1px);
+    background-size: 48px 48px;
+    transform: perspective(420px) rotateX(64deg);
+    transform-origin: 50% 100%;
+    mask-image: linear-gradient(to top, #000 0%, transparent 70%);
+    -webkit-mask-image: linear-gradient(to top, #000 0%, transparent 70%);
+    opacity: .5;
+    pointer-events: none;
+  }
+  canvas#particles {
+    position: fixed; inset: 0; z-index: 2;
+    width: 100%; height: 100%;
+    pointer-events: none;
+  }
+  .scanlines {
+    position: fixed; inset: 0; z-index: 4;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(0,0,0,0) 0px, rgba(0,0,0,0) 2px,
+      rgba(0,0,0,.18) 3px, rgba(0,0,0,.18) 4px
+    );
+    mix-blend-mode: multiply;
+    opacity: .5;
+  }
+  .vignette {
+    position: fixed; inset: 0; z-index: 4; pointer-events: none;
+    box-shadow: inset 0 0 180px 60px rgba(0,0,0,.85);
+  }
+
+  /* ---------- layout ---------- */
+  .stage {
+    position: relative; z-index: 3;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: clamp(18px, 3vh, 30px);
+    padding: clamp(16px, 3vh, 32px) clamp(16px, 4vw, 48px);
+  }
+  header {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px;
+    font-family: var(--pixel);
+    font-size: clamp(8px, 1.1vw, 11px);
+    letter-spacing: .04em;
+    color: var(--dim);
+    text-transform: uppercase;
+  }
+  header img { height: 22px; filter: invert(1) brightness(1.4); opacity: .9; }
+  header .tag { color: var(--pink); text-shadow: 0 0 10px rgba(255,91,209,.6); }
+
+  main { display: grid; place-items: start center; }
+
+  .terminal {
+    width: min(1040px, 100%);
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    box-shadow:
+      0 0 0 1px rgba(95,242,255,.12),
+      0 0 40px rgba(95,242,255,.12),
+      0 30px 80px rgba(0,0,0,.6);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    overflow: hidden;
+    animation: rise .8s cubic-bezier(.2,.8,.2,1) both;
+  }
+  @keyframes rise { from { opacity: 0; transform: translateY(18px) } to { opacity: 1; transform: none } }
+
+  .titlebar {
+    display: flex; align-items: center; gap: 8px;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--line);
+    background: rgba(255,255,255,.02);
+    font-family: var(--pixel);
+    font-size: 9px;
+    color: var(--dim);
+  }
+  .titlebar .dot { width: 11px; height: 11px; border-radius: 50%; }
+  .titlebar .dot.r { background: #ff5f57 } .titlebar .dot.y { background: #febc2e } .titlebar .dot.g { background: #28c840 }
+  .titlebar .title { margin-left: auto; margin-right: auto; }
+
+  .body { padding: clamp(18px, 3vw, 34px); }
+
+  .prompt { color: var(--dim); font-size: clamp(13px, 1.4vw, 15px); margin: 0 0 6px; }
+  .prompt .dollar { color: var(--green); }
+  .prompt .flag { color: var(--orange); }
+
+  h1 {
+    margin: 0 0 16px;
+    font-family: var(--pixel);
+    font-size: clamp(14px, 2.4vw, 24px);
+    line-height: 1.5;
+    color: #fff;
+    text-shadow: 0 0 12px rgba(95,242,255,.45), 0 0 2px #fff;
+  }
+  h1 .accent { color: var(--cyan); }
+
+  .intro {
+    margin: 0 0 8px;
+    max-width: 68ch;
+    font-size: clamp(13px, 1.4vw, 15px);
+    line-height: 1.65;
+    color: var(--dim);
+  }
+  .intro strong { color: var(--text); font-weight: 600; }
+  .intro code {
+    color: var(--orange);
+    background: rgba(255,176,87,.08);
+    border: 1px solid rgba(255,176,87,.25);
+    border-radius: 4px;
+    padding: 0 5px;
+  }
+
+  /* ---------- the list ---------- */
+  .items { list-style: none; margin: 24px 0 0; padding: 0; display: grid; gap: 14px; }
+
+  .item {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: clamp(12px, 2vw, 22px);
+    padding: clamp(14px, 2.2vw, 20px);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--cyan);
+    border-radius: 8px;
+    background: rgba(95,242,255,.04);
+    transition: background .2s, border-color .2s, box-shadow .2s, transform .12s;
+  }
+  .item:hover { background: rgba(95,242,255,.08); box-shadow: 0 0 30px rgba(95,242,255,.16); }
+  .item:nth-child(2) { border-left-color: var(--pink); background: rgba(255,91,209,.04); }
+  .item:nth-child(2):hover { background: rgba(255,91,209,.08); box-shadow: 0 0 30px rgba(255,91,209,.16); }
+  .item:nth-child(3) { border-left-color: var(--orange); background: rgba(255,176,87,.04); }
+  .item:nth-child(3):hover { background: rgba(255,176,87,.08); box-shadow: 0 0 30px rgba(255,176,87,.16); }
+
+  .item .num {
+    font-family: var(--pixel);
+    font-size: clamp(11px, 1.6vw, 16px);
+    color: var(--cyan);
+    opacity: .7;
+  }
+  .item:nth-child(2) .num { color: var(--pink); }
+  .item:nth-child(3) .num { color: var(--orange); }
+
+  .item h2 {
+    margin: 0 0 8px;
+    font-family: var(--pixel);
+    font-size: clamp(10px, 1.35vw, 13px);
+    line-height: 1.6;
+    color: #fff;
+  }
+  .item p {
+    margin: 0;
+    font-size: clamp(12px, 1.3vw, 14px);
+    line-height: 1.6;
+    color: var(--dim);
+    max-width: 60ch;
+  }
+  .item .meta {
+    margin-top: 10px;
+    font-size: clamp(10px, 1.1vw, 12px);
+    color: var(--dim);
+    opacity: .75;
+    display: flex; flex-wrap: wrap; gap: 4px 14px;
+  }
+  .item .meta span::before { content: "· "; color: var(--pink); }
+  .item .meta span:first-child::before { content: ""; }
+
+  .actions { display: grid; gap: 8px; justify-items: stretch; }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    gap: 8px;
+    padding: 13px 18px;
+    min-width: 168px;
+    border: 2px solid var(--cyan);
+    border-radius: 8px;
+    background: var(--cyan);
+    color: #0b0716;
+    font-family: var(--pixel);
+    font-size: clamp(9px, 1.05vw, 11px);
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background .2s, box-shadow .2s, transform .12s, color .2s, border-color .2s;
+  }
+  .btn:hover { box-shadow: 0 0 0 4px rgba(95,242,255,.15), 0 0 30px rgba(95,242,255,.35); }
+  .btn:active { transform: scale(.98); }
+  .btn:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
+
+  .btn.ghost {
+    background: transparent;
+    color: var(--cyan);
+    border-color: rgba(95,242,255,.45);
+  }
+  .btn.ghost:hover { background: rgba(95,242,255,.1); border-color: var(--cyan); }
+  .btn.ghost.done { color: var(--green); border-color: var(--green); background: rgba(125,255,176,.12); }
+  .btn.ghost.fail { color: var(--orange); border-color: var(--orange); background: rgba(255,176,87,.12); }
+
+  .item:nth-child(2) .btn { border-color: var(--pink); background: var(--pink); }
+  .item:nth-child(2) .btn:hover { box-shadow: 0 0 0 4px rgba(255,91,209,.15), 0 0 30px rgba(255,91,209,.35); }
+  .item:nth-child(2) .btn.ghost { background: transparent; color: var(--pink); border-color: rgba(255,91,209,.45); }
+  .item:nth-child(2) .btn.ghost:hover { background: rgba(255,91,209,.1); border-color: var(--pink); }
+  .item:nth-child(3) .btn { border-color: var(--orange); background: var(--orange); }
+  .item:nth-child(3) .btn:hover { box-shadow: 0 0 0 4px rgba(255,176,87,.15), 0 0 30px rgba(255,176,87,.35); }
+  .item:nth-child(3) .btn.ghost { background: transparent; color: var(--orange); border-color: rgba(255,176,87,.45); }
+  .item:nth-child(3) .btn.ghost:hover { background: rgba(255,176,87,.1); border-color: var(--orange); }
+  /* state colours win over the per-item accent, hover included */
+  .item .btn.ghost.done, .item .btn.ghost.done:hover {
+    color: var(--green); border-color: var(--green); background: rgba(125,255,176,.12);
+  }
+  .item .btn.ghost.fail, .item .btn.ghost.fail:hover {
+    color: var(--orange); border-color: var(--orange); background: rgba(255,176,87,.12);
+  }
+
+  .all {
+    margin: 22px 0 0;
+    padding-top: 18px;
+    border-top: 1px dashed var(--line);
+    display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px;
+    font-size: clamp(12px, 1.3vw, 14px);
+    color: var(--dim);
+  }
+  .all .btn { border-color: var(--green); background: var(--green); }
+  .all .btn:hover { box-shadow: 0 0 0 4px rgba(125,255,176,.18), 0 0 30px rgba(125,255,176,.35); }
+
+  footer {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 28px;
+    font-size: clamp(11px, 1.15vw, 13px);
+    color: var(--dim);
+    text-align: center;
+  }
+  footer span::before { content: "▸ "; color: var(--pink); }
+  footer a { color: var(--cyan); text-decoration: none; border-bottom: 1px dashed rgba(95,242,255,.5); }
+  footer a:hover { border-bottom-style: solid; }
+
+  /* toast */
+  .toast {
+    position: fixed; left: 50%; bottom: 8vh; z-index: 5;
+    transform: translate(-50%, 20px);
+    padding: 12px 18px;
+    border-radius: 8px;
+    background: var(--green); color: #0b0716;
+    font-family: var(--pixel); font-size: 10px; letter-spacing: .02em;
+    box-shadow: 0 10px 40px rgba(125,255,176,.35);
+    opacity: 0; pointer-events: none;
+    transition: opacity .25s, transform .25s;
+  }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+  @media (max-width: 720px) {
+    .item { grid-template-columns: auto 1fr; }
+    .item .actions { grid-column: 1 / -1; grid-template-columns: 1fr 1fr; }
+    .btn { min-width: 0; }
+    header { font-size: 8px; }
+    header .tag { display: none; }
+  }
+  @media (max-width: 420px) {
+    .item .actions { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .terminal { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-grad" aria-hidden="true"></div>
+<div class="bg-grid" aria-hidden="true"></div>
+<canvas id="particles" aria-hidden="true"></canvas>
+<div class="scanlines" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+
+<div class="stage">
+  <header>
+    <img src="bas-logo.png" alt="Bas Kommunikasjon">
+    <span class="tag">Dialogkonferansen 2026 · Bygg verktøyet selv</span>
+    <span id="clock" aria-hidden="true">--:--:--</span>
+  </header>
+
+  <main>
+    <section class="terminal" aria-labelledby="h">
+      <div class="titlebar">
+        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+        <span class="title">materiell — work.bas.no/materiell</span>
+      </div>
+      <div class="body">
+        <p class="prompt"><span class="dollar">$</span> ls <span class="flag">--startprompter</span> <span class="flag">--dk26</span></p>
+        <h1 id="h">Tre startprompter du kan <span class="accent">lime rett inn</span>.</h1>
+
+        <p class="intro">
+          Dette er utgangspunktene bak verktøyene fra scenen. Hver fil er en
+          <strong>startprompt</strong>: en beskrivelse du limer inn i Claude Code i en tom
+          mappe, med designprinsippene som avgjør om resultatet blir brukbart — og
+          spørsmålene du bør svare på før du lar agenten skrive kode.
+        </p>
+        <p class="intro">
+          Alt som står i <code>⟨klammer⟩</code> bytter du ut med ditt eget. Filene er vanlig
+          Markdown — ingen konto, ingen installasjon.
+        </p>
+
+        <ul class="items">
+          <li class="item">
+            <span class="num" aria-hidden="true">01</span>
+            <div>
+              <h2>E-post-preflight</h2>
+              <p>
+                Bygg din egen sjekk av markedsførings-e-poster før utsendelse: send en
+                testmail til en egen adresse, få en rapport med funn ved siden av en
+                forhåndsvisning. Prompten dekker regelmotoren, valideringskatalogen og
+                de tre sikkerhetslagene rundt upålitelig e-post-HTML.
+              </p>
+              <div class="meta">
+                <span>startprompt-preflight.md</span>
+                <span>Markdown</span>
+                <span>~4 kB</span>
+              </div>
+            </div>
+            <div class="actions">
+              <a class="btn" href="filer/startprompt-preflight.md" download>LAST NED</a>
+              <button class="btn ghost" type="button" data-copy="filer/startprompt-preflight.md">KOPIER</button>
+            </div>
+          </li>
+
+          <li class="item">
+            <span class="num" aria-hidden="true">02</span>
+            <div>
+              <h2>Canvas-basert bildeverktøy</h2>
+              <p>
+                Bygg et internt verktøy der markedsavdelingen legger tekst, merker og
+                grafikk oppå et bilde og laster ned resultatet i e-postvennlige bredder.
+                Alt skjer i nettleseren — ingen backend, ingen bilder lastet opp noe sted.
+              </p>
+              <div class="meta">
+                <span>startprompt-bildeverktoy.md</span>
+                <span>Markdown</span>
+                <span>~5 kB</span>
+              </div>
+            </div>
+            <div class="actions">
+              <a class="btn" href="filer/startprompt-bildeverktoy.md" download>LAST NED</a>
+              <button class="btn ghost" type="button" data-copy="filer/startprompt-bildeverktoy.md">KOPIER</button>
+            </div>
+          </li>
+
+          <li class="item">
+            <span class="num" aria-hidden="true">03</span>
+            <div>
+              <h2>Verktøy-skill</h2>
+              <p>
+                Pakk et kommandolinjeverktøy — ffmpeg, ImageMagick, pandoc — inn i en
+                skill agenten kan kjøre selv. Prompten forklarer hvorfor en SKILL.md
+                skrives for en modell og ikke for et menneske, og hva som får den til å
+                trigge i det hele tatt.
+              </p>
+              <div class="meta">
+                <span>startprompt-skill.md</span>
+                <span>Markdown</span>
+                <span>~4 kB</span>
+              </div>
+            </div>
+            <div class="actions">
+              <a class="btn" href="filer/startprompt-skill.md" download>LAST NED</a>
+              <button class="btn ghost" type="button" data-copy="filer/startprompt-skill.md">KOPIER</button>
+            </div>
+          </li>
+        </ul>
+
+        <p class="all">
+          <a class="btn" href="filer/startprompter-dk26.zip" download>LAST NED ALLE</a>
+          <span>Alle tre filene i ett zip-arkiv.</span>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Fra Dialogkonferansen 2026</span>
+    <span>Bruk dem som de er, eller skriv dem om</span>
+    <span><a href="https://work.bas.no/dk26/">Salens innboks →</a></span>
+  </footer>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite">KOPIERT ✓</div>
+
+<script>
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- clock ---------- */
+  var clock = document.getElementById('clock');
+  function tick() {
+    var d = new Date();
+    clock.textContent = [d.getHours(), d.getMinutes(), d.getSeconds()]
+      .map(function (n) { return (n < 10 ? '0' : '') + n; }).join(':');
+  }
+  tick(); setInterval(tick, 1000);
+
+  /* ---------- copy file contents ---------- */
+  var toast = document.getElementById('toast');
+  var toastTimer;
+  function showToast(text) {
+    toast.textContent = text;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toast.classList.remove('show'); }, 2600);
+  }
+
+  function legacyCopy(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed'; ta.style.top = '-1000px'; ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select(); ta.setSelectionRange(0, text.length);
+    var ok = false;
+    try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+    document.body.removeChild(ta);
+    return ok;
+  }
+
+  function writeClipboard(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text).catch(function () {
+        return legacyCopy(text) ? null : Promise.reject();
+      });
+    }
+    return legacyCopy(text) ? Promise.resolve() : Promise.reject();
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-copy]'), function (btn) {
+    var resetTimer;
+    btn.addEventListener('click', function () {
+      var url = btn.getAttribute('data-copy');
+      btn.textContent = 'HENTER …';
+      fetch(url, { cache: 'no-store' })
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+        .then(function (text) { return writeClipboard(text).then(function () { return text; }); })
+        .then(function (text) {
+          clearTimeout(resetTimer);
+          btn.classList.remove('fail'); btn.classList.add('done');
+          btn.textContent = 'KOPIERT ✓';
+          showToast('PROMPT KOPIERT ✓ ' + text.length + ' TEGN');
+          burst(btn);
+          resetTimer = setTimeout(function () {
+            btn.classList.remove('done'); btn.textContent = 'KOPIER';
+          }, 2600);
+        })
+        .catch(function () {
+          clearTimeout(resetTimer);
+          btn.classList.remove('done'); btn.classList.add('fail');
+          btn.textContent = 'BRUK LAST NED';
+          showToast('KOPIERING FEILET — LAST NED FILEN');
+          resetTimer = setTimeout(function () {
+            btn.classList.remove('fail'); btn.textContent = 'KOPIER';
+          }, 3200);
+        });
+    });
+  });
+
+  /* ---------- particles ---------- */
+  var cv = document.getElementById('particles');
+  var ctx = cv.getContext('2d');
+  var W, H, DPR;
+  var motes = [], bursts = [];
+  var COLORS = ['#5ff2ff', '#ff5bd1', '#ffffff', '#ffb057'];
+  function resize() {
+    DPR = Math.min(2, window.devicePixelRatio || 1);
+    W = cv.width = Math.floor(innerWidth * DPR);
+    H = cv.height = Math.floor(innerHeight * DPR);
+    cv.style.width = innerWidth + 'px'; cv.style.height = innerHeight + 'px';
+    var n = reduce ? 0 : Math.round(Math.min(90, (innerWidth * innerHeight) / 18000));
+    motes = [];
+    for (var i = 0; i < n; i++) motes.push(newMote(true));
+  }
+  function newMote(anywhere) {
+    var s = 1 + Math.random() * 2;
+    return {
+      x: Math.random() * W,
+      y: anywhere ? Math.random() * H : H + 20 * DPR,
+      vy: -(0.15 + Math.random() * 0.35) * DPR * s * 0.5,
+      sway: Math.random() * Math.PI * 2,
+      swaySpeed: 0.004 + Math.random() * 0.008,
+      size: s * DPR,
+      env: Math.random() < 0.28,
+      c: COLORS[Math.floor(Math.random() * COLORS.length)],
+      a: 0.4 + Math.random() * 0.5
+    };
+  }
+  function drawDoc(x, y, u, color, alpha) {
+    /* chunky 5x7 pixel-art document with three text lines */
+    ctx.globalAlpha = alpha;
+    ctx.fillStyle = color;
+    ctx.fillRect(x, y, u * 5, u * 7);
+    ctx.fillStyle = 'rgba(11,7,22,.85)';
+    ctx.fillRect(x + u, y + u * 2, u * 3, u);
+    ctx.fillRect(x + u, y + u * 4, u * 3, u);
+    ctx.fillRect(x + u, y + u * 6, u * 2, u);
+  }
+  function burst(el) {
+    if (reduce) return;
+    var r = el.getBoundingClientRect();
+    var cx = (r.left + r.width / 2) * DPR, cy = (r.top + r.height / 2) * DPR;
+    for (var i = 0; i < 40; i++) {
+      var ang = Math.random() * Math.PI * 2, sp = (2 + Math.random() * 6) * DPR;
+      bursts.push({
+        x: cx + (Math.random() - .5) * r.width * DPR * .8, y: cy,
+        vx: Math.cos(ang) * sp, vy: Math.sin(ang) * sp - 3 * DPR,
+        life: 1, decay: 0.012 + Math.random() * 0.015,
+        size: (1.2 + Math.random() * 1.6) * DPR,
+        env: Math.random() < .5,
+        c: i % 3 === 0 ? '#7dffb0' : COLORS[Math.floor(Math.random() * COLORS.length)]
+      });
+    }
+  }
+  var last = 0;
+  function loop(t) {
+    requestAnimationFrame(loop);
+    if (document.hidden) return;
+    var dt = Math.min(2.5, (t - last) / 16.67 || 1); last = t;
+    ctx.clearRect(0, 0, W, H);
+    for (var i = 0; i < motes.length; i++) {
+      var m = motes[i];
+      m.sway += m.swaySpeed * dt;
+      m.y += m.vy * dt;
+      var x = m.x + Math.sin(m.sway) * 12 * DPR;
+      var fade = m.y < H * 0.25 ? Math.max(0, m.y / (H * 0.25)) : 1;
+      if (m.env) drawDoc(x, m.y, m.size, m.c, m.a * fade);
+      else { ctx.globalAlpha = m.a * fade; ctx.fillStyle = m.c; ctx.fillRect(x, m.y, m.size * 1.5, m.size * 1.5); }
+      if (m.y < -20 * DPR) motes[i] = newMote(false);
+    }
+    for (var j = bursts.length - 1; j >= 0; j--) {
+      var b = bursts[j];
+      b.x += b.vx * dt; b.y += b.vy * dt; b.vy += 0.18 * DPR * dt; b.vx *= 0.985; b.life -= b.decay * dt;
+      if (b.life <= 0) { bursts.splice(j, 1); continue; }
+      if (b.env) drawDoc(b.x, b.y, b.size, b.c, b.life);
+      else { ctx.globalAlpha = b.life; ctx.fillStyle = b.c; ctx.fillRect(b.x, b.y, b.size * 2, b.size * 2); }
+    }
+    ctx.globalAlpha = 1;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+  if (!reduce) requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>
