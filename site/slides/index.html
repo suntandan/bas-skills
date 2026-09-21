@@ -454,10 +454,10 @@ window.__resources = {
 class Component extends DCLogic {
   state = { remaining: 240, running: false };
   componentWillUnmount() { clearInterval(this._t); }
-  qr(navn) { return {"prompt": "assets/qr-prompt.png", "rapport": null, "repo": "assets/qr-repo.png"}[navn] || null; }
+  qr(navn) { return {"prompt": "assets/qr-prompt.png", "rapport": "assets/qr-rapport.png", "repo": "assets/qr-repo.png"}[navn] || null; }
   renderVals() {
     const p = this.props;
-    const pw = p.wifiPassord || "[fylles inn]";
+    const pw = p.wifiPassord || "GanskeVanskelig";
     const qrPrompt = this.qr('prompt'), qrRapport = this.qr('rapport'), qrRepo = this.qr('repo');
     const m = Math.floor(this.state.remaining / 60), s = this.state.remaining % 60;
     return {

@@ -8,8 +8,8 @@
  * på nytt (de ligger som ferdige PNG-er i assets/, ikke som API-kall).
  */
 window.DK26 = {
-  "wifiPassord": "",
+  "wifiPassord": "GanskeVanskelig",
   "urlPrompt": "https://work.bas.no/dk26/materiell/",
-  "urlRapport": "",
+  "urlRapport": "https://work.bas.no/dk26/rapport/",
   "urlRepo": "https://github.com/suntandan/bas-skills"
 };
