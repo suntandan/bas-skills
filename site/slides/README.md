@@ -67,7 +67,10 @@ klikker for å starte.
 
 ## Thumbnail-stripa
 
-`T` slår stripa av og på mens du står i decket. Det er en øktbryter —
+`T` slår stripa av og på mens du står i decket, og kvitterer med en kort
+«Stripe på» / «Stripe av» nederst. Ser du ingen kvittering, har tasten ikke
+nådd fram til sida i det hele tatt — da er det fokus, tastaturoppsett eller
+en utvidelse som tar den, ikke decket. Det er en øktbryter —
 utgangspunktet ved hver sidelast settes av `visThumbnails` i
 `deck-config.js`, som er `false`. Snarveien ligger i `snarveier.js`.
 
