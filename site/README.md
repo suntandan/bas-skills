@@ -4,8 +4,8 @@ Statiske sider som legges på `work.bas.no`.
 
 ## materiell/
 
-Nedlastingsside for startpromptene fra DK26. Legges på
-`work.bas.no/materiell/` — last opp hele `materiell/`-mappa som den er:
+Nedlastingsside for startpromptene fra DK26. Publisert på
+`work.bas.no/dk26/materiell/` — last opp hele `materiell/`-mappa som den er:
 
 ```
 materiell/

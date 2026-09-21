@@ -55,6 +55,21 @@ med skills-støtte):
   I appen degraderer de til at Claude gjør vinklene selv, sekvensielt — det
   fungerer, men du mister uavhengigheten som er poenget. Bruk dem helst i Claude Code.
 
+## Startprompter
+
+Skillsene over er ferdige verktøy. Vil du bygge dine egne, ligger tre
+startprompter klare til nedlasting:
+
+**<https://work.bas.no/dk26/materiell/>**
+
+| Prompt | Bygger |
+|---|---|
+| `startprompt-preflight` | Et internt verktøy som sjekker e-poster før utsendelse |
+| `startprompt-bildeverktoy` | Et canvas-basert bildeverktøy for markedsavdelingen |
+| `startprompt-skill` | En skill som pakker inn et CLI-verktøy, som `/gif-konvertering` |
+
+Kildefilene ligger også i [`prompts/`](prompts/) her i repoet.
+
 ## Lisens
 
 MIT — se [LICENSE](LICENSE). Bruk, tilpass og del videre.
