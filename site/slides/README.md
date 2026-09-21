@@ -43,7 +43,8 @@ alt annet er kilden uendret:
    i stedet for «Åpne felter» i editoren.
 4. **QR-kodene** er ferdige PNG-er i `assets/` i stedet for kall til
    `api.qrserver.com` mens du står på scenen.
-5. **Thumbnail-stripa** til venstre skrus av via `visThumbnails`.
+5. **Thumbnail-stripa** til venstre skrus av via `visThumbnails`, og
+   `snarveier.js` legges inn (gir `T`-snarveien).
 
 Til sammen: null eksterne forespørsler ved visning. Verifisert i Chrome —
 alle 16 requestene går til egen origin.
@@ -61,13 +62,17 @@ cd .. && python3 -m http.server 8788   # → http://localhost:8788/slides/
 ```
 
 Piltaster / PgUp / PgDn / mellomrom navigerer, `R` nullstiller, tall hopper.
-Slide 14 har en 4-minutters timer du klikker for å starte.
+`T` viser/skjuler thumbnail-stripa. Slide 14 har en 4-minutters timer du
+klikker for å starte.
 
 ## Thumbnail-stripa
 
-`"visThumbnails": true` i `deck-config.js` gir deg kolonnen med slide-
-miniatyrer til venstre — grei når du forbereder deg, men den skal ikke være
-på lerretet. `false` er standard.
+`T` slår stripa av og på mens du står i decket. Det er en øktbryter —
+utgangspunktet ved hver sidelast settes av `visThumbnails` i
+`deck-config.js`, som er `false`. Snarveien ligger i `snarveier.js`.
+
+Trykker du `T` av vane rett før du går på: stripa kommer tilbake ved neste
+last, så sett heller `visThumbnails` og bygg.
 
 `deck-stage.js` har et `no-rail`-attributt for dette, men det virker ikke
 herfra: `x-import` gjør bindestreker om til camelCase, så `no-rail` kommer
@@ -85,6 +90,8 @@ Når decket er endret i editoren, hent ned disse og kjør `python3 bygg.py`:
 | `DK26 Slides.dc.html` | `src/DK26 Slides.dc.html` |
 | `deck-stage.js` | `deck-stage.js` |
 | `support.js` | `support.js` |
+
+`deck-config.js` og `snarveier.js` er våre egne og hentes ikke ned.
 
 `bygg.py` stopper med en tydelig feilmelding hvis kilden har endret form slik
 at et av de fire inngrepene ikke treffer.

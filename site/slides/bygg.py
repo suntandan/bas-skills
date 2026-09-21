@@ -55,6 +55,7 @@ window.__resources = {resources};
 try {{ localStorage.setItem('deck-stage.railVisible', {rail}); }} catch (e) {{}}
 </script>
 <script src="./deck-config.js"></script>
+<script src="./snarveier.js" defer></script>
 <script src="./support.js"></script>"""
 
 FONT_LINKS = """  <link href="fonts/fonts.css" rel="stylesheet">"""
