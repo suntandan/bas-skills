@@ -57,7 +57,7 @@ med skills-støtte):
 
 ## Startprompter
 
-Skillsene over er ferdige verktøy. Vil du bygge dine egne, ligger tre
+Skillsene over er ferdige verktøy. Vil du bygge dine egne, ligger fire
 startprompter klare til nedlasting:
 
 **<https://work.bas.no/dk26/materiell/>**
@@ -67,6 +67,7 @@ startprompter klare til nedlasting:
 | `startprompt-preflight` | Et internt verktøy som sjekker e-poster før utsendelse |
 | `startprompt-bildeverktoy` | Et canvas-basert bildeverktøy for markedsavdelingen |
 | `startprompt-skill` | En skill som pakker inn et CLI-verktøy, som `/gif-konvertering` |
+| `startprompt-avansert-epost` | En interaktiv e-post (kun CSS) med fallback for alle klienter |
 
 Kildefilene ligger også i [`prompts/`](prompts/) her i repoet.
 

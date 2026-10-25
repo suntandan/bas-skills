@@ -181,6 +181,8 @@
   .item:nth-child(2):hover { background: rgba(255,91,209,.08); box-shadow: 0 0 30px rgba(255,91,209,.16); }
   .item:nth-child(3) { border-left-color: var(--orange); background: rgba(255,176,87,.04); }
   .item:nth-child(3):hover { background: rgba(255,176,87,.08); box-shadow: 0 0 30px rgba(255,176,87,.16); }
+  .item:nth-child(4) { border-left-color: var(--green); background: rgba(125,255,176,.04); }
+  .item:nth-child(4):hover { background: rgba(125,255,176,.08); box-shadow: 0 0 30px rgba(125,255,176,.16); }
 
   .item .num {
     font-family: var(--pixel);
@@ -190,6 +192,7 @@
   }
   .item:nth-child(2) .num { color: var(--pink); }
   .item:nth-child(3) .num { color: var(--orange); }
+  .item:nth-child(4) .num { color: var(--green); }
 
   .item h2 {
     margin: 0 0 8px;
@@ -255,6 +258,10 @@
   .item:nth-child(3) .btn:hover { box-shadow: 0 0 0 4px rgba(255,176,87,.15), 0 0 30px rgba(255,176,87,.35); }
   .item:nth-child(3) .btn.ghost { background: transparent; color: var(--orange); border-color: rgba(255,176,87,.45); }
   .item:nth-child(3) .btn.ghost:hover { background: rgba(255,176,87,.1); border-color: var(--orange); }
+  .item:nth-child(4) .btn { border-color: var(--green); background: var(--green); }
+  .item:nth-child(4) .btn:hover { box-shadow: 0 0 0 4px rgba(125,255,176,.15), 0 0 30px rgba(125,255,176,.35); }
+  .item:nth-child(4) .btn.ghost { background: transparent; color: var(--green); border-color: rgba(125,255,176,.45); }
+  .item:nth-child(4) .btn.ghost:hover { background: rgba(125,255,176,.1); border-color: var(--green); }
   /* state colours win over the per-item accent, hover included */
   .item .btn.ghost.done, .item .btn.ghost.done:hover {
     color: var(--green); border-color: var(--green); background: rgba(125,255,176,.12);
@@ -336,7 +343,7 @@
       </div>
       <div class="body">
         <p class="prompt"><span class="dollar">$</span> ls <span class="flag">--startprompter</span> <span class="flag">--dk26</span></p>
-        <h1 id="h">Tre startprompter du kan <span class="accent">lime rett inn</span>.</h1>
+        <h1 id="h">Fire startprompter du kan <span class="accent">lime rett inn</span>.</h1>
 
         <p class="intro">
           Dette er utgangspunktene bak verktøyene fra scenen. Hver fil er en
@@ -414,11 +421,33 @@
               <button class="btn ghost" type="button" data-copy="filer/startprompt-skill.md">KOPIER</button>
             </div>
           </li>
+
+          <li class="item">
+            <span class="num" aria-hidden="true">04</span>
+            <div>
+              <h2>Interaktiv e-post</h2>
+              <p>
+                Bygg én e-post med klikkbar interaktivitet — quiz, faner, akkordeon — uten
+                JavaScript, bare skjulte input-elementer og CSS. Prompten dekker gaten og
+                blocking-reglene per klient, en fullverdig fallback for alle andre, og et
+                skjelett du starter fra. Fyll ut briefen nederst.
+              </p>
+              <div class="meta">
+                <span>startprompt-avansert-epost.md</span>
+                <span>Markdown</span>
+                <span>~19 kB</span>
+              </div>
+            </div>
+            <div class="actions">
+              <a class="btn" href="filer/startprompt-avansert-epost.md" download>LAST NED</a>
+              <button class="btn ghost" type="button" data-copy="filer/startprompt-avansert-epost.md">KOPIER</button>
+            </div>
+          </li>
         </ul>
 
         <p class="all">
           <a class="btn" href="filer/startprompter-dk26.zip" download>LAST NED ALLE</a>
-          <span>Alle tre filene i ett zip-arkiv.</span>
+          <span>Alle fire filene i ett zip-arkiv.</span>
         </p>
       </div>
     </section>

@@ -15,6 +15,7 @@ materiell/
     startprompt-preflight.md
     startprompt-bildeverktoy.md
     startprompt-skill.md
+    startprompt-avansert-epost.md
     startprompter-dk26.zip
 ```
 
